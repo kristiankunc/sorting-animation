@@ -74,14 +74,28 @@ public enum Algorithm {
             Complexity.K,
             true),
 
-    RADIX_SORT("Radix Sort",
-            "Radix sort is a non-comparative integer sorting algorithm that sorts data with integer keys by grouping keys by the individual digits which share the same significant position and value. " +
-                    "A positional notation is required, but because integers can represent strings of characters (e.g., names or dates) and specially formatted floating point numbers, radix sort is not limited to integers.",
-            Complexity.N_K,
-            Complexity.N_K,
-            Complexity.N_K,
-            Complexity.N_PLUS_K,
-            true);
+    SHELL_SORT("Shell Sort",
+            "Shell sort is an in-place comparison sort. It can be seen as either a generalization of sorting by exchange (bubble sort) or sorting by insertion (insertion sort). " +
+                    "The method starts by sorting pairs of elements far apart from each other, then progressively reducing the gap between elements to be compared. " +
+                    "Starting with far apart elements, it can move some out-of-place elements into position faster than a simple nearest neighbor exchange.",
+            Complexity.N,
+            Complexity.N_SQUARED,
+            Complexity.N_SQUARED,
+            Complexity.ONE,
+            false),
+
+    STOOGE_SORT("Stooge Sort",
+            "Stooge sort is a recursive sorting algorithm. It is based on the following algorithm: " +
+                    "If the first element of the list is larger than the last, swap them. " +
+                    "If there are more than 2 elements in the list, then: " +
+                    "Recursively sort the initial 2/3 of the list. " +
+                    "Recursively sort the final 2/3 of the list. " +
+                    "Recursively sort the initial 2/3 of the list again.",
+            Complexity.N_SQUARED,
+            Complexity.N_SQUARED,
+            Complexity.N_SQUARED,
+            Complexity.ONE,
+            false);
 
 
 

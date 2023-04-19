@@ -38,7 +38,8 @@ public class Animation {
             case QUICK_SORT -> QuickSort.animate(matrix);
             case HEAP_SORT -> HeapSort.animate(matrix);
             case COUNTING_SORT -> CountingSort.animate(matrix);
-            case RADIX_SORT -> RadixSort.animate(matrix);
+            case SHELL_SORT -> ShellSort.animate(matrix);
+            case STOOGE_SORT -> StoogeSort.animate(matrix);
         }
 
         endAnimation(matrix);
