@@ -1,6 +1,7 @@
 package lib;
 
 import algorithms.Algorithm;
+import algorithms.animators.*;
 import cz.gyarab.util.Utils;
 import cz.gyarab.util.light.LightColor;
 import cz.gyarab.util.light.Matrix;
@@ -9,9 +10,13 @@ public class Animation {
     public static Matrix setupMatrix() {
         int size = 50;
 
-        String sizeInput = ConsoleTools.stringPrompt("Enter the matrix size, default is 50/50, max is 100/100: ");
+        String sizeInput = ConsoleTools.stringPrompt("Enter the matrix size, default is 50, max is 200: ");
         if (!sizeInput.equals("")) {
             size = Integer.parseInt(sizeInput);
+        }
+
+        if (size > 200) {
+            size = 200;
         }
 
         Matrix matrix = Matrix.createMatrix(size, size);
@@ -25,13 +30,21 @@ public class Animation {
         ArrayTools.arrayToMatrix(matrix, ArrayTools.genRandomArray(matrix.getWidth()));
 
         switch (algorithm) {
-            case BUBBLE_SORT -> bubbleSort(matrix);
-            case BOGO_SORT -> bogoSort(matrix);
-            case SELECTION_SORT -> selectionSort(matrix);
+            case BUBBLE_SORT -> BubbleSort.animate(matrix);
+            case BOGO_SORT -> BogoSort.animate(matrix);
+            case SELECTION_SORT -> SelectionSort.animate(matrix);
+            case INSERTION_SORT -> InsertionSort.animate(matrix);
+            case MERGE_SORT -> MergeSort.animate(matrix);
+            case QUICK_SORT -> QuickSort.animate(matrix);
+            case HEAP_SORT -> HeapSort.animate(matrix);
+            case COUNTING_SORT -> CountingSort.animate(matrix);
+            case RADIX_SORT -> RadixSort.animate(matrix);
         }
+
+        endAnimation(matrix);
     }
 
-    private static void endAnimation(Matrix matrix) {
+    public static void endAnimation(Matrix matrix) {
         for (int i = 0; i < matrix.getWidth(); i++) {
             for (int j = 0; j < matrix.getHeight(); j++) {
                 if (matrix.isOn(i, j)) {
@@ -70,52 +83,5 @@ public class Animation {
         matrix.setColor(LightColor.BLUE);
         MatrixTools.clearMatrix(matrix);
 
-    }
-    private static void selectionSort(Matrix matrix) {
-        matrix.setTitle("Selection Sort");
-        int[] array = ArrayTools.matrixToArray(matrix);
-
-        for (int i = 0; i < array.length; i++) {
-            int minIndex = i;
-            for (int j = i + 1; j < array.length; j++) {
-                if (array[j] < array[minIndex]) {
-                    minIndex = j;
-                }
-            }
-            ArrayTools.swap(array, i, minIndex);
-            ArrayTools.arrayToMatrix(matrix, array);
-            Utils.sleep(1500 / array.length);
-
-        }
-        endAnimation(matrix);
-    }
-    private static void bubbleSort(Matrix matrix) {
-        matrix.setTitle("Bubble Sort");
-        int[] array = ArrayTools.matrixToArray(matrix);
-
-        for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array.length - i - 1; j++) {
-                if (array[j] > array[j + 1]) {
-                    ArrayTools.swap(array, j, j + 1);
-                }
-                ArrayTools.arrayToMatrix(matrix, array);
-                Utils.sleep((long) Math.sqrt(1000 / array.length));
-            }
-        }
-
-        endAnimation(matrix);
-    }
-
-    private static void bogoSort(Matrix matrix) {
-        matrix.setTitle("Bogo Sort");
-        int[] array = ArrayTools.matrixToArray(matrix);
-
-        while (!ArrayTools.isSorted(array)) {
-            array = ArrayTools.genRandomArray(array.length);
-            ArrayTools.arrayToMatrix(matrix, array);
-            Utils.sleep(1);
-        }
-
-        endAnimation(matrix);
     }
 }

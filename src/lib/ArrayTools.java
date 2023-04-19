@@ -53,4 +53,30 @@ public class ArrayTools {
         array[index1] = array[index2];
         array[index2] = temp;
     }
+
+    public static int max(int[] array) { // find the max value in an array
+        int max = array[0];
+        for (int i = 1; i < array.length; i++) {
+            if (array[i] > max) {
+                max = array[i];
+            }
+        }
+        return max;
+    }
+
+    public static int digits(int number) { // find the number of digits in a number
+        int digits = 0;
+        while (number > 0) {
+            number /= 10;
+            digits++;
+        }
+        return digits;
+    }
+
+    public static int digitAt(int number, int digit) { // find the digit at a specific index in a number
+        for (int i = 0; i < digit; i++) {
+            number /= 10;
+        }
+        return number % 10;
+    }
 }
