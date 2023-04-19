@@ -8,11 +8,10 @@ public class CountingSort {
 
     public static void animate(Matrix matrix) {
         int[] array = ArrayTools.matrixToArray(matrix);
-        int[] sorted = sort(matrix, array);
-        ArrayTools.arrayToMatrix(matrix, sorted);
+        sort(matrix, array);
     }
 
-    public static int[] sort(Matrix matrix, int[] array) {
+    public static void sort(Matrix matrix, int[] array) {
         int[] sorted = new int[array.length];
         int[] count = new int[200 + 1];
         for (int j : array) {
@@ -27,6 +26,5 @@ public class CountingSort {
             ArrayTools.arrayToMatrix(matrix, sorted);
             Utils.sleep(15);
         }
-        return sorted;
     }
 }

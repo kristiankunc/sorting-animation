@@ -19,9 +19,9 @@ public class HeapSort {
             heapify(matrix, array, n, i);
         }
         for (int i = n - 1; i >= 0; i--) {
-            Utils.sleep(10);
             ArrayTools.swap(array, 0, i);
             ArrayTools.arrayToMatrix(matrix, array);
+            Utils.sleep(10);
             heapify(matrix, array, i, 0);
         }
     }
@@ -30,7 +30,7 @@ public class HeapSort {
         int largest = i;
         int l = 2 * i + 1;
         int r = 2 * i + 2;
-        Utils.sleep(10);
+
         if (l < n && array[l] > array[largest]) {
             largest = l;
         }
@@ -40,6 +40,7 @@ public class HeapSort {
         if (largest != i) {
             ArrayTools.swap(array, i, largest);
             ArrayTools.arrayToMatrix(matrix, array);
+            Utils.sleep(10);
             heapify(matrix, array, n, largest);
         }
     }

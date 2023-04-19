@@ -4,8 +4,6 @@ import cz.gyarab.util.Utils;
 import cz.gyarab.util.light.Matrix;
 import lib.ArrayTools;
 
-import java.util.Arrays;
-
 public class ShellSort {
     public static void animate(Matrix matrix) {
         matrix.setTitle("Shell Sort");

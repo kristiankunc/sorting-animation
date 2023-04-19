@@ -2,9 +2,7 @@ package algorithms.animators;
 
 import cz.gyarab.util.Utils;
 import cz.gyarab.util.light.Matrix;
-import lib.Animation;
 import lib.ArrayTools;
-import lib.MatrixTools;
 
 public class MergeSort {
     public static void animate(Matrix matrix) {

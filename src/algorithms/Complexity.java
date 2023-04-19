@@ -1,6 +1,5 @@
 package algorithms;
 
-// 🟢 🟡 🟠 🔴
 public enum Complexity {
     ONE("O(1)"),
     LOG_N("O(log n)"),
