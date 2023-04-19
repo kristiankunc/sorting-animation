@@ -10,7 +10,6 @@ public class QuickSort {
         matrix.setTitle("Quick Sort");
         int[] array = ArrayTools.matrixToArray(matrix);
         quickSort(matrix, array, 0, array.length - 1);
-        ArrayTools.arrayToMatrix(matrix, array);
     }
 
     private static void quickSort(Matrix matrix, int[] array, int low, int high) {
@@ -31,7 +30,7 @@ public class QuickSort {
                 array[i] = array[j];
                 array[j] = temp;
             }
-            Utils.sleep(900 / matrix.getWidth());
+            Utils.sleep(20);
             ArrayTools.arrayToMatrix(matrix, array);
         }
         int temp = array[i + 1];

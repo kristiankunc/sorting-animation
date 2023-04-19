@@ -20,7 +20,7 @@ public class SelectionSort {
             }
             ArrayTools.swap(array, i, minIndex);
             ArrayTools.arrayToMatrix(matrix, array);
-            Utils.sleep(1500 / array.length);
+            Utils.sleep(35);
 
         }
     }

@@ -20,7 +20,7 @@ public class InsertionSort {
             }
             array[j + 1] = key;
             ArrayTools.arrayToMatrix(matrix, array);
-            Utils.sleep(array.length);
+            Utils.sleep(60);
         }
     }
 }

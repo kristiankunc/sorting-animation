@@ -47,7 +47,7 @@ public class MergeSort {
             }
             k++;
             ArrayTools.arrayToMatrix(matrix, array);
-            Utils.sleep(1250 / array.length);
+            Utils.sleep(25);
         }
 
         while (i < n1) {
@@ -55,7 +55,7 @@ public class MergeSort {
             i++;
             k++;
             ArrayTools.arrayToMatrix(matrix, array);
-            Utils.sleep(1250 / array.length);
+            Utils.sleep(25);
         }
 
         while (j < n2) {
@@ -63,7 +63,7 @@ public class MergeSort {
             j++;
             k++;
             ArrayTools.arrayToMatrix(matrix, array);
-            Utils.sleep(1250 / array.length);
+            Utils.sleep(25);
         }
     }
 

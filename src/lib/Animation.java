@@ -8,16 +8,7 @@ import cz.gyarab.util.light.Matrix;
 
 public class Animation {
     public static Matrix setupMatrix() {
-        int size = 50;
-
-        String sizeInput = ConsoleTools.stringPrompt("Enter the matrix size, default is 50, max is 200: ");
-        if (!sizeInput.equals("")) {
-            size = Integer.parseInt(sizeInput);
-        }
-
-        if (size > 200) {
-            size = 200;
-        }
+        int size = ConsoleTools.intPrompt("Enter the matrix size, recommended is 50, max is 200: ", 1, 200);
 
         Matrix matrix = Matrix.createMatrix(size, size);
         matrix.showWindow();

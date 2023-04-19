@@ -6,7 +6,7 @@ import lib.ArrayTools;
 
 public class BubbleSort {
 
-    public static void animate(Matrix matrix) { // animate the bubble sort algorithm, dont forget to apply all changes to the matrix
+    public static void animate(Matrix matrix) {
         matrix.setTitle("Bubble Sort");
         int[] array = ArrayTools.matrixToArray(matrix);
 

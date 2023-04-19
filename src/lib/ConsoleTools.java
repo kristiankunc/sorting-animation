@@ -50,12 +50,11 @@ public class ConsoleTools {
                 return retryInt(prompt, min, max);
             }
 
+            return input;
         }
-        catch (Exception InputMismatchException) {
+        catch (Exception e) {
             return retryInt(prompt, min, max);
         }
-
-        return scanner.nextInt();
     }
 
     public static boolean boolPrompt(String prompt) {
@@ -83,7 +82,7 @@ public class ConsoleTools {
 
             return input - 1;
         }
-        catch (Exception InputMismatchException) {
+        catch (Exception e) {
             return retryArray(prompt, array);
         }
     }

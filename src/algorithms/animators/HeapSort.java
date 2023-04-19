@@ -6,6 +6,7 @@ import lib.ArrayTools;
 
 public class HeapSort {
     public static void animate(Matrix matrix) {
+        matrix.setTitle("Heap Sort");
         int[] array = ArrayTools.matrixToArray(matrix);
 
         heapSort(matrix, array);
@@ -14,11 +15,11 @@ public class HeapSort {
     private static void heapSort(Matrix matrix, int[] array) {
         int n = array.length;
         for (int i = n / 2 - 1; i >= 0; i--) {
-            Utils.sleep(300 / array.length);
+            Utils.sleep(10);
             heapify(matrix, array, n, i);
         }
         for (int i = n - 1; i >= 0; i--) {
-            Utils.sleep(300 / array.length);
+            Utils.sleep(10);
             ArrayTools.swap(array, 0, i);
             ArrayTools.arrayToMatrix(matrix, array);
             heapify(matrix, array, i, 0);
@@ -29,7 +30,7 @@ public class HeapSort {
         int largest = i;
         int l = 2 * i + 1;
         int r = 2 * i + 2;
-        Utils.sleep(300 / array.length);
+        Utils.sleep(10);
         if (l < n && array[l] > array[largest]) {
             largest = l;
         }
