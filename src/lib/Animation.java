@@ -55,19 +55,17 @@ public class Animation {
         for (int i = 3; i > 0; i--) {
             switch (i) {
                 case 3 -> {
-                    matrix.setTitle("3");
                     matrix.setColor(LightColor.RED);
                 }
                 case 2 -> {
-                    matrix.setTitle("2");
                     matrix.setColor(LightColor.ORANGE);
                 }
                 case 1 -> {
-                    matrix.setTitle("1");
                     matrix.setColor(LightColor.GREEN);
                 }
             }
 
+            matrix.setTitle(String.valueOf(i));
             MatrixTools.renderNumber(matrix, i);
             Utils.sleep(1000);
         }

@@ -1,7 +1,12 @@
 package lib;
 
 import cz.gyarab.util.light.Matrix;
+
+import java.util.Arrays;
+
 public class ArrayTools {
+    private static int[] lastAppliedArray;
+
     public static int[] genRandomArray(int length) { // random array with no duplicate values, there is no 0, lowest val is 1
         int[] array = new int[length];
         for (int i = 0; i < array.length; i++) {
@@ -37,6 +42,8 @@ public class ArrayTools {
                 }
             }
         }
+
+        lastAppliedArray = array;
     }
 
     public static boolean isSorted(int[] array) { // check if an array is sorted
