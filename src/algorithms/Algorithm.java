@@ -141,4 +141,21 @@ public enum Algorithm {
     public static Algorithm[] getAlgorithms() {
         return Algorithm.values();
     }
+
+    public static Algorithm getById(int id) {
+        if (id < 0 || id >= Algorithm.values().length) {
+            return null;
+        }
+
+        return Algorithm.values()[id];
+    }
+
+    public static Algorithm getByName(String name) {
+        for (Algorithm algorithm : Algorithm.values()) {
+            if (algorithm.prettyName.replace(" ", "").toLowerCase().equals(name)) {
+                return algorithm;
+            }
+        }
+        return null;
+    }
 }

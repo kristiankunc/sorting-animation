@@ -11,11 +11,12 @@ public class Animation {
         int size = ConsoleTools.intPrompt("Enter the matrix size, recommended is 50, max is 200: ", 1, 200);
 
         Matrix matrix = Matrix.createMatrix(size, size);
-        matrix.showWindow();
         return matrix;
     }
 
     public static void animate(Matrix matrix, Algorithm algorithm) {
+        matrix.showWindow();
+
         countdown(matrix);
 
         ArrayTools.arrayToMatrix(matrix, ArrayTools.genRandomArray(matrix.getWidth()));
