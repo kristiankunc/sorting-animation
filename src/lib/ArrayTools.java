@@ -20,7 +20,7 @@ public class ArrayTools {
         }
         return array;
     }
-    public static int[] matrixToArray(Matrix matrix) { // convert the height of each row to an array
+    public static int[] matrixToArray(Matrix matrix) { // convert the height of each row in a matrix to an array
         int[] array = new int[matrix.getWidth()];
         for (int i = 0; i < matrix.getWidth(); i++) {
             for (int j = 0; j < matrix.getHeight(); j++) {
@@ -32,7 +32,7 @@ public class ArrayTools {
         return array;
     }
 
-    public static void arrayToMatrix(Matrix matrix, int[] array) { // convert an array to the height of each row
+    public static void arrayToMatrix(Matrix matrix, int[] array) { // convert an array to the height of each row in a matrix
         for (int i = 0; i < matrix.getWidth(); i++) {
             for (int j = 0; j < matrix.getHeight(); j++) {
                 if (j < array[i]) {

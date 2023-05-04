@@ -7,14 +7,14 @@ import cz.gyarab.util.light.LightColor;
 import cz.gyarab.util.light.Matrix;
 
 public class Animation {
-    public static Matrix setupMatrix() {
+    public static Matrix setupMatrix() { // Prompts the user for the matrix size and creates a matrix
         int size = ConsoleTools.intPrompt("Enter the matrix size, recommended is 50, max is 200: ", 1, 200);
 
         Matrix matrix = Matrix.createMatrix(size, size);
         return matrix;
     }
 
-    public static void animate(Matrix matrix, Algorithm algorithm) {
+    public static void animate(Matrix matrix, Algorithm algorithm) { // Animates the given algorithm
         matrix.showWindow();
 
         countdown(matrix);
@@ -37,7 +37,7 @@ public class Animation {
         endAnimation(matrix);
     }
 
-    public static void endAnimation(Matrix matrix) {
+    public static void endAnimation(Matrix matrix) { // Ends the animation with an ending animation
         for (int i = 0; i < matrix.getWidth(); i++) {
             for (int j = 0; j < matrix.getHeight(); j++) {
                 if (matrix.isOn(i, j)) {
@@ -52,7 +52,7 @@ public class Animation {
         matrix.hideWindow();
     }
 
-    private static void countdown(Matrix matrix) {
+    private static void countdown(Matrix matrix) { // Counts down from 3 to 1 (seven segment display)
         for (int i = 3; i > 0; i--) {
             switch (i) {
                 case 3 -> {

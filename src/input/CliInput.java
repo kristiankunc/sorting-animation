@@ -69,13 +69,14 @@ public class CliInput {
                             info <algorithm> - prints information about the given algorithm
                             help - prints this help message
                         Options:
-                            --matrix-size=<size> - sets the size of the matrix
+                            --matrix-size=<size> - sets the size of the matrix, default is 50
                         Algorithms:
                         """;
 
                 for (int i = 0; i < Algorithm.getAlgorithms().length; i++) {
+                    String spacing = " ".repeat(3 - String.valueOf(i + 1).length());
                     Algorithm algorithm = Algorithm.getAlgorithms()[i];
-                    help += "   " + (i + 1) + ". " + algorithm.prettyName + "\n";
+                    help += spacing + (i + 1) + ". " + algorithm.prettyName + "\n";
                 }
 
                 help += "To specify an algorithm you can use either the id of the algorithm or its name without spaces (bubblesort, shellsort, ...)";

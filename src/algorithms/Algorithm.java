@@ -121,7 +121,8 @@ public enum Algorithm {
 
     @Override
     public String toString() {
-        return description + "\n"
+        return prettyName + "\n\n"
+                + description + "\n"
                 + "Time complexity:" + "\n"
                 + "Best case: "+ bestCase.prettyName  + "\n"
                 + "Average case: " + averageCase.prettyName  + "\n"
@@ -152,7 +153,7 @@ public enum Algorithm {
 
     public static Algorithm getByName(String name) {
         for (Algorithm algorithm : Algorithm.values()) {
-            if (algorithm.prettyName.replace(" ", "").toLowerCase().equals(name)) {
+            if (algorithm.prettyName.replace(" ", "").equalsIgnoreCase(name)) {
                 return algorithm;
             }
         }
