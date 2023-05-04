@@ -39,7 +39,10 @@ public class DefaultInput {
                     System.out.println(algorithm);
                     System.exit(0);
                 }
-                case 2 -> System.exit(0);
+                case 2 -> {
+                    System.out.println("Peace out!");
+                    System.exit(0);
+                }
             }
         }
     }
