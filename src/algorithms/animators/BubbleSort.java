@@ -3,6 +3,7 @@ package algorithms.animators;
 import cz.gyarab.util.light.Matrix;
 import lib.ArrayTools;
 
+// https://www.geeksforgeeks.org/bubble-sort/
 public class BubbleSort {
 
     public static void animate(Matrix matrix) {

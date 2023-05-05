@@ -9,7 +9,7 @@ public class DefaultInput {
     public static void handle() {
         String[] algorithmNames = Algorithm.getNames();
 
-        int actionIndex = -1;
+        int actionIndex = -1; // -1 = not selected (default), 0 = animate, 1 = get info, 2 = exit
 
         while (true) {
             switch (actionIndex) {

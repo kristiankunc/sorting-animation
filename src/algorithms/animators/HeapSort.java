@@ -4,6 +4,7 @@ import cz.gyarab.util.Utils;
 import cz.gyarab.util.light.Matrix;
 import lib.ArrayTools;
 
+// https://www.geeksforgeeks.org/heap-sort/
 public class HeapSort {
     public static void animate(Matrix matrix) {
         matrix.setTitle("Heap Sort");

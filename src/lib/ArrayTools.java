@@ -5,8 +5,6 @@ import cz.gyarab.util.light.Matrix;
 import java.util.Arrays;
 
 public class ArrayTools {
-    private static int[] lastAppliedArray;
-
     public static int[] genRandomArray(int length) { // random array with no duplicate values, there is no 0, lowest val is 1
         int[] array = new int[length];
         for (int i = 0; i < array.length; i++) {
@@ -42,8 +40,6 @@ public class ArrayTools {
                 }
             }
         }
-
-        lastAppliedArray = array;
     }
 
     public static boolean isSorted(int[] array) { // check if an array is sorted
@@ -59,15 +55,5 @@ public class ArrayTools {
         int temp = array[index1];
         array[index1] = array[index2];
         array[index2] = temp;
-    }
-
-    public static int getMax(int[] array) { // get the max value in an array
-        int max = array[0];
-        for (int i = 1; i < array.length; i++) {
-            if (array[i] > max) {
-                max = array[i];
-            }
-        }
-        return max;
     }
 }

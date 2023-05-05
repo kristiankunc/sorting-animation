@@ -4,6 +4,7 @@ import cz.gyarab.util.Utils;
 import cz.gyarab.util.light.Matrix;
 import lib.ArrayTools;
 
+// https://www.codingeek.com/algorithms/counting-sort-explanation-pseudocode-and-implementation/
 public class CountingSort {
 
     public static void animate(Matrix matrix) {

@@ -4,6 +4,8 @@ import cz.gyarab.util.Utils;
 import cz.gyarab.util.light.Matrix;
 import lib.ArrayTools;
 
+// https://www.geeksforgeeks.org/stooge-sort/
+
 public class StoogeSort {
     public static void animate(Matrix matrix) {
         matrix.setTitle("Stooge Sort");

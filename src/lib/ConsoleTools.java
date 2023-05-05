@@ -22,11 +22,13 @@ public class ConsoleTools {
 
         if (os.contains("Windows")) {
             try {
+                // https://stackoverflow.com/a/32295974/14762088
                 new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
             } catch (Exception e) {
                 System.out.println("Error: " + e);
             }
         } else {
+            // https://stackoverflow.com/a/32295974/14762088
             System.out.print("\033[H\033[2J");
             System.out.flush();
         }

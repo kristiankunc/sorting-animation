@@ -120,7 +120,7 @@ public enum Algorithm {
     }
 
     @Override
-    public String toString() {
+    public String toString() { // make the print look nice
         return prettyName + "\n\n"
                 + description + "\n"
                 + "Time complexity:" + "\n"
@@ -131,7 +131,7 @@ public enum Algorithm {
                 + "Stable: " + isStable;
     }
 
-    public static String[] getNames() {
+    public static String[] getNames() { // get all the names of the algorithms
         String[] names = new String[Algorithm.values().length];
         for (int i = 0; i < Algorithm.values().length; i++) {
             names[i] = Algorithm.values()[i].prettyName;
@@ -139,11 +139,11 @@ public enum Algorithm {
         return names;
     }
 
-    public static Algorithm[] getAlgorithms() {
+    public static Algorithm[] getAlgorithms() { // get all the algorithms
         return Algorithm.values();
     }
 
-    public static Algorithm getById(int id) {
+    public static Algorithm getById(int id) { // get the algorithm by id
         if (id < 0 || id >= Algorithm.values().length) {
             return null;
         }
@@ -151,9 +151,9 @@ public enum Algorithm {
         return Algorithm.values()[id];
     }
 
-    public static Algorithm getByName(String name) {
+    public static Algorithm getByName(String name) { // get the algorithm by name, case insensitive, spaces are ignored
         for (Algorithm algorithm : Algorithm.values()) {
-            if (algorithm.prettyName.replace(" ", "").equalsIgnoreCase(name)) {
+            if (algorithm.prettyName.replace(" ", "").equalsIgnoreCase(name.replaceAll(" ", ""))) {
                 return algorithm;
             }
         }

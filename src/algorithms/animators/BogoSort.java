@@ -4,6 +4,7 @@ import cz.gyarab.util.Utils;
 import cz.gyarab.util.light.Matrix;
 import lib.ArrayTools;
 
+// https://www.geeksforgeeks.org/bogosort-permutation-sort/
 public class BogoSort {
     public static void animate(Matrix matrix) {
         matrix.setTitle("Bogo Sort");

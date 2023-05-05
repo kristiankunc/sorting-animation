@@ -5,6 +5,7 @@ import cz.gyarab.util.light.Matrix;
 import lib.Animation;
 import lib.ArrayTools;
 
+// https://www.geeksforgeeks.org/selection-sort/
 
 public class SelectionSort {
     public static void animate(Matrix matrix) {

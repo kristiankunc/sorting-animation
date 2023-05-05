@@ -4,6 +4,7 @@ import cz.gyarab.util.Utils;
 import cz.gyarab.util.light.Matrix;
 import lib.ArrayTools;
 
+// https://www.geeksforgeeks.org/merge-sort/
 public class MergeSort {
     public static void animate(Matrix matrix) {
         matrix.setTitle("Merge Sort");

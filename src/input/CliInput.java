@@ -91,7 +91,7 @@ public class CliInput {
         }
     }
     private static Algorithm getAlgorithm(String arg) {
-        if (arg.matches("\\d+")) {
+        if (arg.matches("\\d+")) { // if arg is a number, get by index
             int algorithmIndex = Integer.parseInt(arg);
             return Algorithm.getById(algorithmIndex - 1);
 

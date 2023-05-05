@@ -10,8 +10,7 @@ public class Animation {
     public static Matrix setupMatrix() { // Prompts the user for the matrix size and creates a matrix
         int size = ConsoleTools.intPrompt("Enter the matrix size, recommended is 50, max is 200: ", 1, 200);
 
-        Matrix matrix = Matrix.createMatrix(size, size);
-        return matrix;
+        return Matrix.createMatrix(size, size);
     }
 
     public static void animate(Matrix matrix, Algorithm algorithm) { // Animates the given algorithm
