@@ -37,6 +37,8 @@ public class Animation {
     }
 
     public static void endAnimation(Matrix matrix) { // Ends the animation with an ending animation
+        matrix.setColor(LightColor.BLUE);
+
         for (int i = 0; i < matrix.getWidth(); i++) {
             for (int j = 0; j < matrix.getHeight(); j++) {
                 if (matrix.isOn(i, j)) {
