@@ -19,7 +19,7 @@ public class ShellSort {
                 }
                 array[j] = temp;
                 ArrayTools.arrayToMatrix(matrix, array);
-                Utils.sleep(15);
+                Utils.sleep(25);
             }
         }
     }

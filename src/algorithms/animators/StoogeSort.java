@@ -22,7 +22,7 @@ public class StoogeSort {
         if (array[l] > array[h]) {
             ArrayTools.swap(array, l, h);
             ArrayTools.arrayToMatrix(matrix, array);
-            Utils.sleep(10);
+            Utils.sleep(20);
         }
 
         if (h - l + 1 > 2) {
