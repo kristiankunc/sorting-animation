@@ -1,6 +1,9 @@
 package lib;
 
+import cz.gyarab.util.light.LightColor;
 import cz.gyarab.util.light.Matrix;
+
+import java.awt.*;
 
 public class MatrixTools {
     public static final int[] sevenSegmentNumbers = {0b1111110, 0b0110000, 0b1101101, 0b1111001, 0b0110011, 0b1011011, 0b1011111, 0b1110000, 0b1111111, 0b1111011};
@@ -61,6 +64,15 @@ public class MatrixTools {
         }
     }
 
+    public static void resetColor(Matrix matrix) {
+        for (int i = 0; i < matrix.getWidth(); i++) {
+            for (int j = 0; j < matrix.getHeight(); j++) {
+                if (matrix.isOn(i, j)) {
+                    matrix.setColor(i, j, LightColor.BLUE);
+                }
+            }
+        }
+    }
     public static void makeFullscreen(Matrix matrix) {
         // TODO: Implement
     }

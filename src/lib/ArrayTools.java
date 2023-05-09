@@ -38,12 +38,16 @@ public class ArrayTools {
         }
 
         int[] changedIndexes = new int[array.length];
+        int firstChangedIndex = 0;
+
         for (int i = 0; i < array.length; i++) {
             if (array[i] != lastAppliedArray[i]) {
                 changedIndexes[i] = 1;
+                if (firstChangedIndex == 0) {
+                    firstChangedIndex = i;
+                }
             }
         }
-
         for (int i = 0; i < matrix.getWidth(); i++) {
             for (int j = 0; j < matrix.getHeight(); j++) {
                 if (j < array[i]) {
@@ -57,7 +61,6 @@ public class ArrayTools {
                 }
             }
         }
-
         lastAppliedArray = array.clone();
     }
 
