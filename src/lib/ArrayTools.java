@@ -1,10 +1,12 @@
 package lib;
 
+import cz.gyarab.util.light.LightColor;
 import cz.gyarab.util.light.Matrix;
 
 import java.util.Arrays;
 
 public class ArrayTools {
+    private static int[] lastAppliedArray = null;
     public static int[] genRandomArray(int length) { // random array with no duplicate values, there is no 0, lowest val is 1
         int[] array = new int[length];
         for (int i = 0; i < array.length; i++) {
@@ -31,15 +33,32 @@ public class ArrayTools {
     }
 
     public static void arrayToMatrix(Matrix matrix, int[] array) { // convert an array to the height of each row in a matrix
+        if (lastAppliedArray == null) {
+            lastAppliedArray = array.clone();
+        }
+
+        int[] changedIndexes = new int[array.length];
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] != lastAppliedArray[i]) {
+                changedIndexes[i] = 1;
+            }
+        }
+
         for (int i = 0; i < matrix.getWidth(); i++) {
             for (int j = 0; j < matrix.getHeight(); j++) {
                 if (j < array[i]) {
-                    matrix.setOn(i, j);
+                    if (changedIndexes[i] == 1) {
+                        matrix.setColor(i, j, LightColor.RED);
+                    } else {
+                        matrix.setColor(i, j, LightColor.BLUE);
+                    }
                 } else {
                     matrix.setOff(i, j);
                 }
             }
         }
+
+        lastAppliedArray = array.clone();
     }
 
     public static boolean isSorted(int[] array) { // check if an array is sorted

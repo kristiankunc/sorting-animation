@@ -16,13 +16,13 @@ public class HeapSort {
     private static void heapSort(Matrix matrix, int[] array) {
         int n = array.length;
         for (int i = n / 2 - 1; i >= 0; i--) {
-            Utils.sleep(10);
+            Utils.sleep(15);
             heapify(matrix, array, n, i);
         }
         for (int i = n - 1; i >= 0; i--) {
             ArrayTools.swap(array, 0, i);
             ArrayTools.arrayToMatrix(matrix, array);
-            Utils.sleep(10);
+            Utils.sleep(15);
             heapify(matrix, array, i, 0);
         }
     }
@@ -41,7 +41,7 @@ public class HeapSort {
         if (largest != i) {
             ArrayTools.swap(array, i, largest);
             ArrayTools.arrayToMatrix(matrix, array);
-            Utils.sleep(10);
+            Utils.sleep(15);
             heapify(matrix, array, n, largest);
         }
     }

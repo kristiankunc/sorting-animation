@@ -25,7 +25,7 @@ public class CountingSort {
             sorted[count[array[i]] - 1] = array[i];
             count[array[i]]--;
             ArrayTools.arrayToMatrix(matrix, sorted);
-            Utils.sleep(15);
+            Utils.sleep(50);
         }
     }
 }

@@ -1,5 +1,6 @@
 package algorithms.animators;
 
+import cz.gyarab.util.Utils;
 import cz.gyarab.util.light.Matrix;
 import lib.ArrayTools;
 
@@ -16,6 +17,7 @@ public class BubbleSort {
                     ArrayTools.swap(array, j - 1, j);
                 }
                 ArrayTools.arrayToMatrix(matrix, array);
+                Utils.sleep(10);
             }
         }
     }
