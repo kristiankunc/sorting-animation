@@ -3,31 +3,31 @@ package algorithms.animators;
 import cz.gyarab.util.Utils;
 import cz.gyarab.util.light.Matrix;
 import lib.ArrayTools;
+import lib.SoundPlayer;
 
 // https://www.geeksforgeeks.org/heap-sort/
 public class HeapSort {
     public static void animate(Matrix matrix) {
         matrix.setTitle("Heap Sort");
         int[] array = ArrayTools.matrixToArray(matrix);
+        SoundPlayer player = new SoundPlayer();
 
-        heapSort(matrix, array);
-    }
-
-    private static void heapSort(Matrix matrix, int[] array) {
         int n = array.length;
         for (int i = n / 2 - 1; i >= 0; i--) {
             Utils.sleep(15);
-            heapify(matrix, array, n, i);
+            heapify(matrix, player, array, n, i);
         }
         for (int i = n - 1; i >= 0; i--) {
             ArrayTools.swap(array, 0, i);
             ArrayTools.arrayToMatrix(matrix, array);
-            Utils.sleep(20);
-            heapify(matrix, array, i, 0);
+            player.playFromArray(array[i], array.length);
+            Utils.sleep(30);
+            heapify(matrix, player, array, i, 0);
         }
-    }
 
-    private static void heapify(Matrix matrix, int[] array, int n, int i) {
+        player.reset();
+    }
+    private static void heapify(Matrix matrix, SoundPlayer player, int[] array, int n, int i) {
         int largest = i;
         int l = 2 * i + 1;
         int r = 2 * i + 2;
@@ -41,8 +41,9 @@ public class HeapSort {
         if (largest != i) {
             ArrayTools.swap(array, i, largest);
             ArrayTools.arrayToMatrix(matrix, array);
-            Utils.sleep(20);
-            heapify(matrix, array, n, largest);
+            player.playFromArray(array[i], array.length);
+            Utils.sleep(30);
+            heapify(matrix, player, array, n, largest);
         }
     }
 }

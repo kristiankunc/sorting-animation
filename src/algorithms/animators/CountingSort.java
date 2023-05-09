@@ -3,16 +3,16 @@ package algorithms.animators;
 import cz.gyarab.util.Utils;
 import cz.gyarab.util.light.Matrix;
 import lib.ArrayTools;
+import lib.SoundPlayer;
 
 // https://www.codingeek.com/algorithms/counting-sort-explanation-pseudocode-and-implementation/
 public class CountingSort {
 
     public static void animate(Matrix matrix) {
+        matrix.setTitle("Counting Sort");
         int[] array = ArrayTools.matrixToArray(matrix);
-        sort(matrix, array);
-    }
+        SoundPlayer player = new SoundPlayer();
 
-    public static void sort(Matrix matrix, int[] array) {
         int[] sorted = new int[array.length];
         int[] count = new int[200 + 1];
         for (int j : array) {
@@ -25,7 +25,10 @@ public class CountingSort {
             sorted[count[array[i]] - 1] = array[i];
             count[array[i]]--;
             ArrayTools.arrayToMatrix(matrix, sorted);
+            player.playFromArray(sorted[i], sorted.length);
             Utils.sleep(50);
         }
+
+        player.reset();
     }
 }

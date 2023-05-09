@@ -3,25 +3,30 @@ package algorithms.animators;
 import cz.gyarab.util.Utils;
 import cz.gyarab.util.light.Matrix;
 import lib.ArrayTools;
+import lib.SoundPlayer;
 
 // https://www.geeksforgeeks.org/merge-sort/
 public class MergeSort {
     public static void animate(Matrix matrix) {
         matrix.setTitle("Merge Sort");
         int[] array = ArrayTools.matrixToArray(matrix);
-        sort(matrix, 0, array.length - 1);
+        SoundPlayer player = new SoundPlayer();
+
+        sort(matrix, player, 0, array.length - 1);
+
+        player.reset();
     }
 
-    private static void sort(Matrix matrix, int l, int r) {
+    private static void sort(Matrix matrix, SoundPlayer player, int l, int r) {
         if (l < r) {
             int m = (l + r) / 2;
-            sort(matrix, l, m);
-            sort(matrix, m + 1, r);
-            merge(matrix, l, m, r);
+            sort(matrix, player, l, m);
+            sort(matrix, player, m + 1, r);
+            merge(matrix, player, l, m, r);
         }
     }
 
-    private static void merge(Matrix matrix, int l, int m, int r) { // do not forget to apply the array to matrix on every change
+    private static void merge(Matrix matrix, SoundPlayer player, int l, int m, int r) { // do not forget to apply the array to matrix on every change
         int[] array = ArrayTools.matrixToArray(matrix);
         int n1 = m - l + 1;
         int n2 = r - m;
@@ -45,6 +50,7 @@ public class MergeSort {
                 j++;
             }
             k++;
+            player.playFromArray(array[k - 1], array.length);
             ArrayTools.arrayToMatrix(matrix, array);
             Utils.sleep(25);
         }
@@ -53,6 +59,7 @@ public class MergeSort {
             array[k] = L[i];
             i++;
             k++;
+            player.playFromArray(array[k - 1], array.length);
             ArrayTools.arrayToMatrix(matrix, array);
             Utils.sleep(25);
         }
@@ -61,6 +68,7 @@ public class MergeSort {
             array[k] = R[j];
             j++;
             k++;
+            player.playFromArray(array[k - 1], array.length);
             ArrayTools.arrayToMatrix(matrix, array);
             Utils.sleep(25);
         }

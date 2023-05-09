@@ -39,6 +39,9 @@ public class Animation {
     public static void endAnimation(Matrix matrix) { // Ends the animation with an ending animation
         MatrixTools.resetColor(matrix);
 
+        SoundPlayer player = new SoundPlayer();
+        player.reset();
+
         for (int i = 0; i < matrix.getWidth(); i++) {
             for (int j = 0; j < matrix.getHeight(); j++) {
                 if (matrix.isOn(i, j)) {
@@ -46,7 +49,10 @@ public class Animation {
                 }
             }
             Utils.sleep(10);
+            player.playFromArray(i, matrix.getWidth());
         }
+
+        player.reset();
 
         Utils.sleep(1500);
 

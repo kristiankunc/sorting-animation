@@ -3,8 +3,6 @@ package lib;
 import cz.gyarab.util.light.LightColor;
 import cz.gyarab.util.light.Matrix;
 
-import java.util.Arrays;
-
 public class ArrayTools {
     private static int[] lastAppliedArray = null;
     public static int[] genRandomArray(int length) { // random array with no duplicate values, there is no 0, lowest val is 1
@@ -38,13 +36,13 @@ public class ArrayTools {
         }
 
         int[] changedIndexes = new int[array.length];
-        int firstChangedIndex = 0;
+        int firstChangedValue = 0;
 
         for (int i = 0; i < array.length; i++) {
             if (array[i] != lastAppliedArray[i]) {
                 changedIndexes[i] = 1;
-                if (firstChangedIndex == 0) {
-                    firstChangedIndex = i;
+                if (firstChangedValue == 0) {
+                    firstChangedValue = array[i];
                 }
             }
         }
