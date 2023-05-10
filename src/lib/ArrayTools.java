@@ -35,27 +35,21 @@ public class ArrayTools {
             lastAppliedArray = array.clone();
         }
 
-        int[] changedIndexes = new int[array.length];
-
-        for (int i = 0; i < array.length; i++) { // check which indexes have changed
-            if (array[i] != lastAppliedArray[i]) {
-                changedIndexes[i] = 1;
-            }
-        }
         for (int i = 0; i < matrix.getWidth(); i++) { // apply the array to the matrix
+            LightColor color = LightColor.BLUE;
+
+            if (array[i] != lastAppliedArray[i]) {
+                color = LightColor.RED;
+            }
             for (int j = 0; j < matrix.getHeight(); j++) {
-                if (j < array[i]) {
-                    if (changedIndexes[i] == 1) { // if the index has changed, set the color to red, otherwise blue
-                        matrix.setColor(i, j, LightColor.RED);
-                    } else {
-                        matrix.setColor(i, j, LightColor.BLUE);
-                    }
+                if (j < array[i]) { // if the height is less than the value of the array at the index, turn on the light
+                    matrix.setColor(i, j, color); // set the color of the light
                 } else {
                     matrix.setOff(i, j);
                 }
             }
         }
-        lastAppliedArray = array.clone();
+        lastAppliedArray = array.clone(); // set lastAppliedArray to the array
     }
 
     public static boolean isSorted(int[] array) { // check if an array is sorted

@@ -17,25 +17,24 @@ public class SoundPlayer {
         }
     }
     public void playFromArray(int value, int max) { // plays a sound from a value and max value
-        if (isMuted) return;
+        if (isMuted) return; // if the sound player is muted, return
 
+        // https://stackoverflow.com/a/929107/14762088
         double freq = 120 + (value / (double) max) * (1212 - 120); // converts to range 120hz-1212hz
 
         byte[] buf = new byte[1];
         try {
-            sdl.open(af);
+            sdl.open(af); // try to open the audio line
         } catch (Exception e) {
-            System.out.println("Error opening audio line, cannot play sound");
+            e.printStackTrace();
         }
 
         sdl.start();
         for (int i = 0; i < 1000; i++) {
             double angle = i / (44100.0 / freq) * 2.0 * Math.PI; // 44100 is the sample rate, 2.0 is to make it louder, Math.PI is to make it a sine wave
-            buf[0] = (byte) (Math.sin(angle) * 100); // 100 is the volume
+            buf[0] = (byte) (Math.sin(angle) * 100); // Get the sine of the angle, multiply by 100 to make it louder
             sdl.write(buf, 0, 1); // write to audio line
         }
-
-        // reset()
     }
 
     public void reset() { // closes the sdl, should be called after playing a set of sounds to reset the audio line
