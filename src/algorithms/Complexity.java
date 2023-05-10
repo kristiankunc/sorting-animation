@@ -15,7 +15,7 @@ public enum Complexity {
     public final String prettyName;
 
 
-    Complexity(String prettyName) { //
+    Complexity(String prettyName) {
         this.prettyName = prettyName;
     }
 }

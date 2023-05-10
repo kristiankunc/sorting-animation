@@ -7,12 +7,12 @@ public class ArrayTools {
     private static int[] lastAppliedArray = null;
     public static int[] genRandomArray(int length) { // random array with no duplicate values, there is no 0, lowest val is 1
         int[] array = new int[length];
-        for (int i = 0; i < array.length; i++) {
+        for (int i = 0; i < array.length; i++) { // fill array with values 1 to length
             array[i] = i + 1;
         }
-        for (int i = 0; i < array.length; i++) {
-            int randomIndex = (int) (Math.random() * array.length);
-            int temp = array[i];
+        for (int i = 0; i < array.length; i++) { // shuffle array
+            int randomIndex = (int) (Math.random() * array.length); // random index from 0 to length
+            int temp = array[i]; // swap values
             array[i] = array[randomIndex];
             array[randomIndex] = temp;
         }
@@ -23,7 +23,7 @@ public class ArrayTools {
         for (int i = 0; i < matrix.getWidth(); i++) {
             for (int j = 0; j < matrix.getHeight(); j++) {
                 if (matrix.isOn(i, j)) {
-                    array[i] = j + 1;
+                    array[i] = j + 1; // add 1 to the value because the lowest value is 1
                 }
             }
         }
@@ -31,25 +31,21 @@ public class ArrayTools {
     }
 
     public static void arrayToMatrix(Matrix matrix, int[] array) { // convert an array to the height of each row in a matrix
-        if (lastAppliedArray == null) {
+        if (lastAppliedArray == null) { // if this is the first time the array is being applied, set lastAppliedArray to the array
             lastAppliedArray = array.clone();
         }
 
         int[] changedIndexes = new int[array.length];
-        int firstChangedValue = 0;
 
-        for (int i = 0; i < array.length; i++) {
+        for (int i = 0; i < array.length; i++) { // check which indexes have changed
             if (array[i] != lastAppliedArray[i]) {
                 changedIndexes[i] = 1;
-                if (firstChangedValue == 0) {
-                    firstChangedValue = array[i];
-                }
             }
         }
-        for (int i = 0; i < matrix.getWidth(); i++) {
+        for (int i = 0; i < matrix.getWidth(); i++) { // apply the array to the matrix
             for (int j = 0; j < matrix.getHeight(); j++) {
                 if (j < array[i]) {
-                    if (changedIndexes[i] == 1) {
+                    if (changedIndexes[i] == 1) { // if the index has changed, set the color to red, otherwise blue
                         matrix.setColor(i, j, LightColor.RED);
                     } else {
                         matrix.setColor(i, j, LightColor.BLUE);

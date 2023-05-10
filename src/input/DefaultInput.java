@@ -13,7 +13,7 @@ public class DefaultInput {
 
         while (true) {
             switch (actionIndex) {
-                case -1 -> {
+                case -1 -> { // not selected
                     actionIndex = ConsoleTools.arrayPrompt("What would you like to do?", new String[]{
                             "Animate an algorithm",
                             "Get information about an algorithm",
@@ -21,7 +21,7 @@ public class DefaultInput {
                     });
                 }
 
-                case 0 -> {
+                case 0 -> { // animate
                     actionIndex = -1;
                     int algorithmIndex = ConsoleTools.arrayPrompt("Which algorithm would you like to animate?", algorithmNames);
                     Algorithm algorithm = Algorithm.getAlgorithms()[algorithmIndex];
@@ -31,15 +31,17 @@ public class DefaultInput {
                     Animation.animate(matrix, algorithm);
                 }
 
-                case 1 -> {
+                case 1 -> { // get info
                     actionIndex = -1;
                     int algorithmIndex = ConsoleTools.arrayPrompt("Which algorithm would you like to get information about?", algorithmNames);
                     Algorithm algorithm =  Algorithm.getAlgorithms()[algorithmIndex];
+
                     ConsoleTools.clearConsole();
+
                     System.out.println(algorithm);
                     System.exit(0);
                 }
-                case 2 -> {
+                case 2 -> { // exit
                     System.out.println("Peace out!");
                     System.exit(0);
                 }

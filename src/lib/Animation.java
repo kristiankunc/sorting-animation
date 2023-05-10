@@ -18,9 +18,9 @@ public class Animation {
 
         countdown(matrix);
 
-        ArrayTools.arrayToMatrix(matrix, ArrayTools.genRandomArray(matrix.getWidth()));
+        ArrayTools.arrayToMatrix(matrix, ArrayTools.genRandomArray(matrix.getWidth())); // Generates a random array and displays it
 
-        switch (algorithm) {
+        switch (algorithm) { // animate the algorithm by calling the correct animator
             case BUBBLE_SORT -> BubbleSort.animate(matrix);
             case BOGO_SORT -> BogoSort.animate(matrix);
             case SELECTION_SORT -> SelectionSort.animate(matrix);
@@ -40,9 +40,9 @@ public class Animation {
         MatrixTools.resetColor(matrix);
 
         SoundPlayer player = new SoundPlayer();
-        player.reset();
+        player.reset(); // not needed (?) but just to be sure
 
-        for (int i = 0; i < matrix.getWidth(); i++) {
+        for (int i = 0; i < matrix.getWidth(); i++) { // make the matrix green, slowly
             for (int j = 0; j < matrix.getHeight(); j++) {
                 if (matrix.isOn(i, j)) {
                     matrix.setColor(i, j, LightColor.GREEN);

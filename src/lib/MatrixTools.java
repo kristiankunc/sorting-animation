@@ -20,7 +20,8 @@ public class MatrixTools {
         clearMatrix(matrix);
 
         int numberToRender = sevenSegmentNumbers[number];
-
+        
+         // checks if nth bit is 1 to render the corresponding segment
         if ((numberToRender & 0b1000000) == 0b1000000) {
             for (int i = 0; i < matrix.getWidth(); i++) {
                 matrix.setOn(i, matrix.getHeight() - 1);
@@ -64,7 +65,7 @@ public class MatrixTools {
         }
     }
 
-    public static void resetColor(Matrix matrix) {
+    public static void resetColor(Matrix matrix) { // Resets the color of the matrix to blue
         for (int i = 0; i < matrix.getWidth(); i++) {
             for (int j = 0; j < matrix.getHeight(); j++) {
                 if (matrix.isOn(i, j)) {

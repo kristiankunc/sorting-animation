@@ -33,19 +33,13 @@ public class ConsoleTools {
             System.out.flush();
         }
     }
-    public static String stringPrompt(String prompt) { // Prompts the user for a string
-        clearConsole();
-        Scanner scanner = new Scanner(System.in);
-        System.out.print(prompt);
-        return scanner.nextLine();
-    }
 
     public static int intPrompt(String prompt, int min, int max) { // Prompts the user for an int
         clearConsole();
         Scanner scanner = new Scanner(System.in);
         System.out.print(prompt);
 
-        try {
+        try { // Tries to get the input
             int input = scanner.nextInt();
 
             if (input < min || input > max) {
@@ -54,7 +48,7 @@ public class ConsoleTools {
 
             return input;
         }
-        catch (Exception e) {
+        catch (Exception e) { // If the input is invalid, retry
             return retryInt(prompt, min, max);
         }
     }
@@ -70,12 +64,13 @@ public class ConsoleTools {
         clearConsole();
         System.out.println(prompt);
         Scanner scanner = new Scanner(System.in);
-        for (int i = 0; i < array.length; i++) {
+
+        for (int i = 0; i < array.length; i++) { // Prints the array with first index being 1
             System.out.println((i + 1) + ": " + array[i]);
         }
         System.out.print("Enter a number: ");
 
-        try {
+        try { // Tries to get the input
             int input = scanner.nextInt();
 
             if (input < 1 || input > array.length) {
@@ -84,7 +79,7 @@ public class ConsoleTools {
 
             return input - 1;
         }
-        catch (Exception e) {
+        catch (Exception e) { // If the input is invalid, retry
             return retryArray(prompt, array);
         }
     }

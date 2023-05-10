@@ -17,10 +17,7 @@ public class CliInput {
 
         switch (action) {
             case "animate" -> {
-                if (args.length < 2) {
-                    System.out.println("Missing algorithm argument");
-                    System.exit(1);
-                }
+                checkAlgorithmArg(args);
 
                 String algorithmArg = args[1];
 
@@ -33,7 +30,7 @@ public class CliInput {
 
                 int matrixSize = 50;
 
-                for (String arg : args) {
+                for (String arg : args) { // try to get matrix size from args, if not default to 50
                     if (arg.matches("--matrix-size=\\d+")) {
                         matrixSize = Integer.parseInt(arg.split("=")[1]);
                     }
@@ -44,10 +41,7 @@ public class CliInput {
                 System.exit(0);
             }
             case "info" -> {
-                if (args.length < 2) {
-                    System.out.println("Missing algorithm argument");
-                    System.exit(1);
-                }
+                checkAlgorithmArg(args);
 
                 String algorithmArg = args[1];
 
@@ -90,7 +84,15 @@ public class CliInput {
             }
         }
     }
-    private static Algorithm getAlgorithm(String arg) {
+
+    private static void checkAlgorithmArg(String[] args) { // check if algorithm arg is present
+        if (args.length < 2) {
+            System.out.println("Missing algorithm argument");
+            System.exit(1);
+        }
+    }
+
+    private static Algorithm getAlgorithm(String arg) { // get algorithm by arg (either id or name)
         if (arg.matches("\\d+")) { // if arg is a number, get by index
             int algorithmIndex = Integer.parseInt(arg);
             return Algorithm.getById(algorithmIndex - 1);

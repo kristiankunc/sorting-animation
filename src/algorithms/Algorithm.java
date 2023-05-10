@@ -85,7 +85,7 @@ public enum Algorithm {
             false),
 
     STOOGE_SORT("Stooge Sort",
-            "Stooge sort is a recursive sorting algorithm. It is based on the following algorithm: " +
+            "Stooge sort is a recursive sorting algorithm. It is based on the following basis: " +
                     "If the first element of the list is larger than the last, swap them. " +
                     "If there are more than 2 elements in the list, then: " +
                     "Recursively sort the initial 2/3 of the list. " +
@@ -120,7 +120,7 @@ public enum Algorithm {
     }
 
     @Override
-    public String toString() { // make the print look nice
+    public String toString() { // make the printout look nice
         return prettyName + "\n\n"
                 + description + "\n"
                 + "Time complexity:" + "\n"
@@ -131,7 +131,7 @@ public enum Algorithm {
                 + "Stable: " + isStable;
     }
 
-    public static String[] getNames() { // get all the names of the algorithms
+    public static String[] getNames() { // get all the algorithm names
         String[] names = new String[Algorithm.values().length];
         for (int i = 0; i < Algorithm.values().length; i++) {
             names[i] = Algorithm.values()[i].prettyName;
@@ -143,7 +143,7 @@ public enum Algorithm {
         return Algorithm.values();
     }
 
-    public static Algorithm getById(int id) { // get the algorithm by id
+    public static Algorithm getById(int id) { // get an algorithm by id
         if (id < 0 || id >= Algorithm.values().length) {
             return null;
         }
@@ -151,7 +151,7 @@ public enum Algorithm {
         return Algorithm.values()[id];
     }
 
-    public static Algorithm getByName(String name) { // get the algorithm by name, case insensitive, spaces are ignored
+    public static Algorithm getByName(String name) { // get an algorithm by name, case insensitive, spaces are ignored
         for (Algorithm algorithm : Algorithm.values()) {
             if (algorithm.prettyName.replace(" ", "").equalsIgnoreCase(name.replaceAll(" ", ""))) {
                 return algorithm;
