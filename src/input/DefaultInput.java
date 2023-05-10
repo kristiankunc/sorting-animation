@@ -25,10 +25,12 @@ public class DefaultInput {
                     actionIndex = -1;
                     int algorithmIndex = ConsoleTools.arrayPrompt("Which algorithm would you like to animate?", algorithmNames);
                     Algorithm algorithm = Algorithm.getAlgorithms()[algorithmIndex];
+                    boolean playSound = ConsoleTools.boolPrompt("Would you like to play a sound?");
 
+                    System.exit(0);
                     Matrix matrix = Animation.setupMatrix();
 
-                    Animation.animate(matrix, algorithm);
+                    Animation.animate(matrix, algorithm, playSound);
                 }
 
                 case 1 -> { // get info

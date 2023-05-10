@@ -1,12 +1,7 @@
 package lib;
 
-import javax.sound.midi.MidiSystem;
-import javax.sound.midi.Synthesizer;
 import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.SourceDataLine;
-import java.util.Arrays;
-
 public class SoundPlayer {
     private SourceDataLine sdl;
     private final AudioFormat af;

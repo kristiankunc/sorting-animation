@@ -8,12 +8,12 @@ import cz.gyarab.util.light.Matrix;
 
 public class Animation {
     public static Matrix setupMatrix() { // Prompts the user for the matrix size and creates a matrix
-        int size = ConsoleTools.intPrompt("Enter the matrix size, recommended is 50, max is 200: ", 1, 200);
+        int size = ConsoleTools.intPrompt("Enter the matrix size, recommended is 50, max is 200:", 1, 200);
 
         return Matrix.createMatrix(size, size);
     }
 
-    public static void animate(Matrix matrix, Algorithm algorithm) { // Animates the given algorithm
+    public static void animate(Matrix matrix, Algorithm algorithm, boolean playSound) { // Animates the given algorithm
         matrix.showWindow();
 
         countdown(matrix);
@@ -33,14 +33,15 @@ public class Animation {
             case STOOGE_SORT -> StoogeSort.animate(matrix);
         }
 
-        endAnimation(matrix);
+        endAnimation(matrix, playSound);
     }
 
-    public static void endAnimation(Matrix matrix) { // Ends the animation with an ending animation
+    public static void endAnimation(Matrix matrix, boolean playSound) { // Ends the animation with an ending animation
         MatrixTools.resetColor(matrix);
 
         SoundPlayer player = new SoundPlayer();
         player.reset(); // not needed (?) but just to be sure
+
 
         for (int i = 0; i < matrix.getWidth(); i++) { // make the matrix green, slowly
             for (int j = 0; j < matrix.getHeight(); j++) {

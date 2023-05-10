@@ -29,15 +29,18 @@ public class CliInput {
                 }
 
                 int matrixSize = 50;
+                boolean playSound = false;
 
                 for (String arg : args) { // try to get matrix size from args, if not default to 50
                     if (arg.matches("--matrix-size=\\d+")) {
                         matrixSize = Integer.parseInt(arg.split("=")[1]);
+                    } else if (arg.equals("--play-sound")) {
+                        playSound = true;
                     }
                 }
 
                 Matrix matrix = Matrix.createMatrix(matrixSize, matrixSize);
-                Animation.animate(matrix, algorithm);
+                Animation.animate(matrix, algorithm, playSound);
                 System.exit(0);
             }
             case "info" -> {
@@ -64,6 +67,7 @@ public class CliInput {
                             help - prints this help message
                         Options:
                             --matrix-size=<size> - sets the size of the matrix, default is 50
+                            --play-sound - plays a sound along with the animation, default is false
                         Algorithms:
                         """;
 

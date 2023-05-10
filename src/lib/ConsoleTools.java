@@ -37,7 +37,7 @@ public class ConsoleTools {
     public static int intPrompt(String prompt, int min, int max) { // Prompts the user for an int
         clearConsole();
         Scanner scanner = new Scanner(System.in);
-        System.out.print(prompt);
+        System.out.print(prompt + " ");
 
         try { // Tries to get the input
             int input = scanner.nextInt();
@@ -56,7 +56,7 @@ public class ConsoleTools {
     public static boolean boolPrompt(String prompt) { // Prompts the user for a boolean
         clearConsole();
         Scanner scanner = new Scanner(System.in);
-        System.out.print(prompt);
+        System.out.print(prompt + " (y/n): ");
         return scanner.nextLine().equalsIgnoreCase("y");
     }
 
