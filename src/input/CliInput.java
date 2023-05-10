@@ -77,7 +77,13 @@ public class CliInput {
                     help += spacing + (i + 1) + ". " + algorithm.prettyName + "\n";
                 }
 
-                help += "To specify an algorithm you can use either the id of the algorithm or its name without spaces (bubblesort, shellsort, ...)";
+                help += """
+                        To specify an algorithm you can use either the id of the algorithm or its name without spaces (bubblesort, shellsort, ...)
+                        
+                        Example usage:
+                            java -jar main.jar animate 1 --matrix-size=100 --play-sound
+                            java -jar main.jar info shellsort
+                        """;
                 System.out.println(help);
 
                 System.exit(0);
