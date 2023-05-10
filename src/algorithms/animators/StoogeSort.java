@@ -28,7 +28,7 @@ public class StoogeSort {
             ArrayTools.swap(array, l, h);
             player.playFromArray(array[l], array.length);
             ArrayTools.arrayToMatrix(matrix, array);
-            Utils.sleep(20);
+            Utils.sleep(2);
         }
 
         if (h - l + 1 > 2) {
