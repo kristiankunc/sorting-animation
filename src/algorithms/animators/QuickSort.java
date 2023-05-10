@@ -35,10 +35,10 @@ public class QuickSort {
                 int temp = array[i];
                 array[i] = array[j];
                 array[j] = temp;
+                ArrayTools.arrayToMatrix(matrix, array);
+                player.playFromArray(array[i], array.length);
+                Utils.sleep(25);
             }
-            ArrayTools.arrayToMatrix(matrix, array);
-            player.playFromArray(array[j], array.length);
-            Utils.sleep(20);
         }
         int temp = array[i + 1];
         array[i + 1] = array[high];
