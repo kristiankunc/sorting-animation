@@ -8,10 +8,10 @@ import lib.SoundPlayer;
 // https://www.geeksforgeeks.org/bubble-sort/
 public class BubbleSort {
 
-    public static void animate(Matrix matrix) {
+    public static void animate(Matrix matrix, boolean playSound) {
         matrix.setTitle("Bubble Sort");
         int[] array = ArrayTools.matrixToArray(matrix);
-        SoundPlayer player = new SoundPlayer();
+        SoundPlayer player = new SoundPlayer(playSound);
 
         for (int i = 0; i < array.length; i++) {
             for (int j = 1; j < (array.length - i); j++) {

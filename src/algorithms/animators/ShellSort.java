@@ -7,10 +7,10 @@ import lib.SoundPlayer;
 
 // https://www.geeksforgeeks.org/shellsort/
 public class ShellSort {
-    public static void animate(Matrix matrix) {
+    public static void animate(Matrix matrix, boolean playSound) {
         matrix.setTitle("Shell Sort");
         int[] array = ArrayTools.matrixToArray(matrix);
-        SoundPlayer player = new SoundPlayer();
+        SoundPlayer player = new SoundPlayer(playSound);
 
         for (int gap = array.length / 2; gap > 0; gap /= 2) {
             for (int i = gap; i < array.length; i += 1) {

@@ -7,10 +7,10 @@ import lib.SoundPlayer;
 
 // https://www.geeksforgeeks.org/insertion-sort/
 public class InsertionSort {
-    public static void animate(Matrix matrix) {
+    public static void animate(Matrix matrix, boolean playSound) {
         matrix.setTitle("Insertion Sort");
         int[] array = ArrayTools.matrixToArray(matrix);
-        SoundPlayer player = new SoundPlayer();
+        SoundPlayer player = new SoundPlayer(playSound);
 
         for (int i = 1; i < array.length; i++) {
             int key = array[i];

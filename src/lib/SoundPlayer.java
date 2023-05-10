@@ -5,7 +5,10 @@ import javax.sound.sampled.SourceDataLine;
 public class SoundPlayer {
     private SourceDataLine sdl;
     private final AudioFormat af;
-    public SoundPlayer() {
+    private boolean isMuted;
+    public SoundPlayer(boolean playSound) {
+        this.isMuted = !playSound;
+
         af = new AudioFormat((float) 44100, 8, 1, true, false);
         try {
             sdl = javax.sound.sampled.AudioSystem.getSourceDataLine(af);
@@ -14,6 +17,8 @@ public class SoundPlayer {
         }
     }
     public void playFromArray(int value, int max) { // plays a sound from a value and max value
+        if (isMuted) return;
+
         double freq = 120 + (value / (double) max) * (1212 - 120); // converts to range 120hz-1212hz
 
         byte[] buf = new byte[1];
@@ -38,8 +43,12 @@ public class SoundPlayer {
         sdl.close();
     }
 
+    public void setMuted(boolean muted) { // sets the muted state
+        isMuted = muted;
+    }
+
     public static void main(String[] args) { // test
-        SoundPlayer sp = new SoundPlayer();
+        SoundPlayer sp = new SoundPlayer(true);
         for (int i = 0; i < 10; i++) {
             sp.playFromArray(i, 10);
         }

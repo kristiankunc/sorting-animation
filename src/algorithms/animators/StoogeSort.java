@@ -8,10 +8,10 @@ import lib.SoundPlayer;
 // https://www.geeksforgeeks.org/stooge-sort/
 
 public class StoogeSort {
-    public static void animate(Matrix matrix) {
+    public static void animate(Matrix matrix, boolean playSound) {
         matrix.setTitle("Stooge Sort");
         int[] array = ArrayTools.matrixToArray(matrix);
-        SoundPlayer player = new SoundPlayer();
+        SoundPlayer player = new SoundPlayer(playSound);
 
         stoogeSort(matrix, player, array, 0, array.length - 1);
 

@@ -8,10 +8,10 @@ import lib.SoundPlayer;
 // https://www.codingeek.com/algorithms/counting-sort-explanation-pseudocode-and-implementation/
 public class CountingSort {
 
-    public static void animate(Matrix matrix) {
+    public static void animate(Matrix matrix, boolean playSound) {
         matrix.setTitle("Counting Sort");
         int[] array = ArrayTools.matrixToArray(matrix);
-        SoundPlayer player = new SoundPlayer();
+        SoundPlayer player = new SoundPlayer(playSound);
 
         int[] sorted = new int[array.length];
         int[] count = new int[200 + 1];

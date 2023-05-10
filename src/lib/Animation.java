@@ -21,16 +21,16 @@ public class Animation {
         ArrayTools.arrayToMatrix(matrix, ArrayTools.genRandomArray(matrix.getWidth())); // Generates a random array and displays it
 
         switch (algorithm) { // animate the algorithm by calling the correct animator
-            case BUBBLE_SORT -> BubbleSort.animate(matrix);
-            case BOGO_SORT -> BogoSort.animate(matrix);
-            case SELECTION_SORT -> SelectionSort.animate(matrix);
-            case INSERTION_SORT -> InsertionSort.animate(matrix);
-            case MERGE_SORT -> MergeSort.animate(matrix);
-            case QUICK_SORT -> QuickSort.animate(matrix);
-            case HEAP_SORT -> HeapSort.animate(matrix);
-            case COUNTING_SORT -> CountingSort.animate(matrix);
-            case SHELL_SORT -> ShellSort.animate(matrix);
-            case STOOGE_SORT -> StoogeSort.animate(matrix);
+            case BUBBLE_SORT -> BubbleSort.animate(matrix, playSound);
+            case BOGO_SORT -> BogoSort.animate(matrix, playSound);
+            case SELECTION_SORT -> SelectionSort.animate(matrix, playSound);
+            case INSERTION_SORT -> InsertionSort.animate(matrix, playSound);
+            case MERGE_SORT -> MergeSort.animate(matrix, playSound);
+            case QUICK_SORT -> QuickSort.animate(matrix, playSound);
+            case HEAP_SORT -> HeapSort.animate(matrix, playSound);
+            case COUNTING_SORT -> CountingSort.animate(matrix, playSound);
+            case SHELL_SORT -> ShellSort.animate(matrix, playSound);
+            case STOOGE_SORT -> StoogeSort.animate(matrix, playSound);
         }
 
         endAnimation(matrix, playSound);
@@ -39,7 +39,7 @@ public class Animation {
     public static void endAnimation(Matrix matrix, boolean playSound) { // Ends the animation with an ending animation
         MatrixTools.resetColor(matrix);
 
-        SoundPlayer player = new SoundPlayer();
+        SoundPlayer player = new SoundPlayer(playSound);
         player.reset(); // not needed (?) but just to be sure
 
 

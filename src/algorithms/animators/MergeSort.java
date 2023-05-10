@@ -7,10 +7,10 @@ import lib.SoundPlayer;
 
 // https://www.geeksforgeeks.org/merge-sort/
 public class MergeSort {
-    public static void animate(Matrix matrix) {
+    public static void animate(Matrix matrix, boolean playSound) {
         matrix.setTitle("Merge Sort");
         int[] array = ArrayTools.matrixToArray(matrix);
-        SoundPlayer player = new SoundPlayer();
+        SoundPlayer player = new SoundPlayer(playSound);
 
         sort(matrix, player, 0, array.length - 1);
 

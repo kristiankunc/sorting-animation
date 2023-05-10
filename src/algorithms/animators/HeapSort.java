@@ -7,10 +7,10 @@ import lib.SoundPlayer;
 
 // https://www.geeksforgeeks.org/heap-sort/
 public class HeapSort {
-    public static void animate(Matrix matrix) {
+    public static void animate(Matrix matrix, boolean playSound) {
         matrix.setTitle("Heap Sort");
         int[] array = ArrayTools.matrixToArray(matrix);
-        SoundPlayer player = new SoundPlayer();
+        SoundPlayer player = new SoundPlayer(playSound);
 
         int n = array.length;
         for (int i = n / 2 - 1; i >= 0; i--) {

@@ -7,11 +7,11 @@ import lib.SoundPlayer;
 
 // https://www.geeksforgeeks.org/quick-sort/
 public class QuickSort {
-    public static void animate(Matrix matrix) {
+    public static void animate(Matrix matrix, boolean playSound) {
         // TODO: Fix this
         matrix.setTitle("Quick Sort");
         int[] array = ArrayTools.matrixToArray(matrix);
-        SoundPlayer player = new SoundPlayer();
+        SoundPlayer player = new SoundPlayer(playSound);
 
         quickSort(matrix, player, array, 0, array.length - 1);
 
