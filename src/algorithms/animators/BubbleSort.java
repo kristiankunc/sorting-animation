@@ -13,13 +13,13 @@ public class BubbleSort {
         int[] array = ArrayTools.matrixToArray(matrix);
         SoundPlayer player = new SoundPlayer(playSound);
 
-        for (int i = 0; i < array.length; i++) {
+        for (int i = 0; i < array.length; i++) { // loop through all elements
             for (int j = 1; j < (array.length - i); j++) {
-                if (array[j - 1] > array[j]) {
+                if (array[j - 1] > array[j]) { // if the previous element is bigger than the current element, swap them
                     ArrayTools.swap(array, j - 1, j);
                     player.playFromArray(array[j - 1], array.length);
                 }
-                ArrayTools.arrayToMatrix(matrix, array);
+                ArrayTools.arrayToMatrix(matrix, array); // update the matrix
                 Utils.sleep(10);
             }
         }

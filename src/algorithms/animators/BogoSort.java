@@ -12,9 +12,9 @@ public class BogoSort {
         int[] array = ArrayTools.matrixToArray(matrix);
         SoundPlayer player = new SoundPlayer(playSound);
 
-        while (!ArrayTools.isSorted(array)) {
-            array = ArrayTools.genRandomArray(array.length);
-            ArrayTools.arrayToMatrix(matrix, array);
+        while (!ArrayTools.isSorted(array)) { // while array is not sorted
+            array = ArrayTools.genRandomArray(array.length); // shuffle array
+            ArrayTools.arrayToMatrix(matrix, array); // update matrix
             player.playFromArray(array[0], array.length);
             Utils.sleep(1);
         }

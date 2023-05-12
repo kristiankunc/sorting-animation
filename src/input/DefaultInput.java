@@ -24,26 +24,26 @@ public class DefaultInput {
                 case 0 -> { // animate
                     actionIndex = -1;
                     int algorithmIndex = ConsoleTools.arrayPrompt("Which algorithm would you like to animate?", algorithmNames);
-                    Algorithm algorithm = Algorithm.getAlgorithms()[algorithmIndex];
-                    boolean playSound = ConsoleTools.boolPrompt("Would you like to play a sound?");
+                    Algorithm algorithm = Algorithm.getAlgorithms()[algorithmIndex]; // get algorithm
+                    boolean playSound = ConsoleTools.boolPrompt("Would you like to play a sound?"); // get play sound option
 
-                    Matrix matrix = Animation.setupMatrix();
+                    Matrix matrix = Animation.setupMatrix(); // setup matrix
 
-                    Animation.animate(matrix, algorithm, playSound);
+                    Animation.animate(matrix, algorithm, playSound); // animate
                 }
 
                 case 1 -> { // get info
                     actionIndex = -1;
                     int algorithmIndex = ConsoleTools.arrayPrompt("Which algorithm would you like to get information about?", algorithmNames);
-                    Algorithm algorithm =  Algorithm.getAlgorithms()[algorithmIndex];
+                    Algorithm algorithm =  Algorithm.getAlgorithms()[algorithmIndex]; // get algorithm
 
                     ConsoleTools.clearConsole();
 
-                    System.out.println(algorithm);
+                    System.out.println(algorithm); // print info
                     System.exit(0);
                 }
                 case 2 -> { // exit
-                    System.out.println("Peace out!");
+                    System.out.println("Peace out!"); // print exit message
                     System.exit(0);
                 }
             }

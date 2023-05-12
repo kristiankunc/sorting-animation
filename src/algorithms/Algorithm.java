@@ -98,9 +98,6 @@ public enum Algorithm {
             false);
 
 
-
-
-    // Bubble sort is the simplest sorting algorithm that works by repeatedly swapping the adjacent elements if they are in wrong order.
     public final String prettyName;
     public final String description;
     public final Complexity bestCase;

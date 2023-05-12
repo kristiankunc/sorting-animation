@@ -13,7 +13,7 @@ public class StoogeSort {
         int[] array = ArrayTools.matrixToArray(matrix);
         SoundPlayer player = new SoundPlayer(playSound);
 
-        stoogeSort(matrix, player, array, 0, array.length - 1);
+        stoogeSort(matrix, player, array, 0, array.length - 1); // sort the array
 
         player.reset();
 
@@ -24,18 +24,18 @@ public class StoogeSort {
             return;
         }
 
-        if (array[l] > array[h]) {
+        if (array[l] > array[h]) { // swap if left element is greater than right element
             ArrayTools.swap(array, l, h);
             player.playFromArray(array[l], array.length);
-            ArrayTools.arrayToMatrix(matrix, array);
+            ArrayTools.arrayToMatrix(matrix, array); // update matrix
             Utils.sleep(2);
         }
 
-        if (h - l + 1 > 2) {
-            int t = (h - l + 1) / 3;
-            stoogeSort(matrix, player, array, l, h - t);
-            stoogeSort(matrix, player, array, l + t, h);
-            stoogeSort(matrix, player, array, l, h - t);
+        if (h - l + 1 > 2) { // if there are more than 2 elements
+            int t = (h - l + 1) / 3; // find the third of the array
+            stoogeSort(matrix, player, array, l, h - t); // sort the first 2/3 of the array
+            stoogeSort(matrix, player, array, l + t, h); // sort the last 2/3 of the array
+            stoogeSort(matrix, player, array, l, h - t); // sort the first 2/3 of the array again
         }
     }
 }

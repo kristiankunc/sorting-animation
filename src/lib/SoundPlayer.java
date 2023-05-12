@@ -30,6 +30,8 @@ public class SoundPlayer {
         }
 
         sdl.start();
+
+        //http://blog.gtiwari333.com/2011/12/java-sound-generate-play-sine-wave.html
         for (int i = 0; i < 1000; i++) {
             double angle = i / (44100.0 / freq) * 2.0 * Math.PI; // 44100 is the sample rate, 2.0 is to make it louder, Math.PI is to make it a sine wave
             buf[0] = (byte) (Math.sin(angle) * 100); // Get the sine of the angle, multiply by 100 to make it louder
@@ -40,16 +42,5 @@ public class SoundPlayer {
     public void reset() { // closes the sdl, should be called after playing a set of sounds to reset the audio line
         sdl.stop();
         sdl.close();
-    }
-
-    public void setMuted(boolean muted) { // sets the muted state
-        isMuted = muted;
-    }
-
-    public static void main(String[] args) { // test
-        SoundPlayer sp = new SoundPlayer(true);
-        for (int i = 0; i < 10; i++) {
-            sp.playFromArray(i, 10);
-        }
     }
 }

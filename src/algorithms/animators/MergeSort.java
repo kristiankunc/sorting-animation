@@ -12,46 +12,45 @@ public class MergeSort {
         int[] array = ArrayTools.matrixToArray(matrix);
         SoundPlayer player = new SoundPlayer(playSound);
 
-        sort(matrix, player, 0, array.length - 1);
+        sort(matrix, player, 0, array.length - 1); // sort the array
 
         player.reset();
     }
 
     private static void sort(Matrix matrix, SoundPlayer player, int l, int r) {
-        if (l < r) {
-            int m = (l + r) / 2;
-            sort(matrix, player, l, m);
-            sort(matrix, player, m + 1, r);
-            merge(matrix, player, l, m, r);
+        if (l < r) { // if there is more than one element
+            int m = (l + r) / 2; // find the middle
+            sort(matrix, player, l, m); // sort the left side
+            sort(matrix, player, m + 1, r); // sort the right side
+            merge(matrix, player, l, m, r); // merge the two sides
         }
     }
 
     private static void merge(Matrix matrix, SoundPlayer player, int l, int m, int r) { // do not forget to apply the array to matrix on every change
         int[] array = ArrayTools.matrixToArray(matrix);
-        int n1 = m - l + 1;
-        int n2 = r - m;
+        int n1 = m - l + 1; // size of the left side
+        int n2 = r - m; // size of the right side
 
-        int[] L = new int[n1];
-        int[] R = new int[n2];
+        int[] L = new int[n1]; // create the left side
+        int[] R = new int[n2]; // create the right side
 
-        for (int i = 0; i < n1; ++i)
-            L[i] = array[l + i];
-        for (int j = 0; j < n2; ++j)
+        System.arraycopy(array, l, L, 0, n1); // copy the left side
+        for (int j = 0; j < n2; ++j) // copy the right side
             R[j] = array[m + 1 + j];
 
-        int i = 0, j = 0;
-        int k = l;
-        while (i < n1 && j < n2) {
+        int i = 0, j = 0; // indexes for the left and right side
+        int k = l; // index for the array
+        while (i < n1 && j < n2) { // while there are elements in both sides
             if (L[i] <= R[j]) {
-                array[k] = L[i];
+                array[k] = L[i]; // if the left side is smaller
                 i++;
-            } else {
-                array[k] = R[j];
+            } else { // if the right side is smaller
+                array[k] = R[j]; // if the right side is smaller
                 j++;
             }
             k++;
             player.playFromArray(array[k - 1], array.length);
-            ArrayTools.arrayToMatrix(matrix, array);
+            ArrayTools.arrayToMatrix(matrix, array); // apply the array to matrix
             Utils.sleep(25);
         }
 

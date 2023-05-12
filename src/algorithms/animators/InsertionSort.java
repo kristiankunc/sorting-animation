@@ -12,17 +12,17 @@ public class InsertionSort {
         int[] array = ArrayTools.matrixToArray(matrix);
         SoundPlayer player = new SoundPlayer(playSound);
 
-        for (int i = 1; i < array.length; i++) {
-            int key = array[i];
-            int j = i - 1;
+        for (int i = 1; i < array.length; i++) { // loop through array
+            int key = array[i]; // key is the current element
+            int j = i - 1; // j is the index of the element before the current element
 
-            while (j >= 0 && array[j] > key) {
-                array[j + 1] = array[j];
-                j--;
+            while (j >= 0 && array[j] > key) { // loop through sorted part of array
+                array[j + 1] = array[j]; // move elements to the right
+                j--; // move to the left
             }
-            array[j + 1] = key;
+            array[j + 1] = key; // insert key to the right place
             player.playFromArray(array[j + 1], array.length);
-            ArrayTools.arrayToMatrix(matrix, array);
+            ArrayTools.arrayToMatrix(matrix, array); // update matrix
             Utils.sleep(60);
         }
 

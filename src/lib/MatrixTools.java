@@ -74,7 +74,4 @@ public class MatrixTools {
             }
         }
     }
-    public static void makeFullscreen(Matrix matrix) {
-        // TODO: Implement
-    }
 }

@@ -12,15 +12,14 @@ public class ShellSort {
         int[] array = ArrayTools.matrixToArray(matrix);
         SoundPlayer player = new SoundPlayer(playSound);
 
-        for (int gap = array.length / 2; gap > 0; gap /= 2) {
-            for (int i = gap; i < array.length; i += 1) {
-                int temp = array[i];
+        for (int gap = array.length / 2; gap > 0; gap /= 2) { // loop over gaps, gap means how many elements are between two compared elements
+            for (int i = gap; i < array.length; i += 1) { // loop over elements
                 int j;
-                for (j = i; j >= gap && array[j - gap] >= temp; j -= gap) {
-                    array[j] = array[j - gap];
+                for (j = i; j >= gap && array[j - gap] >= array[i]; j -= gap) { // loop over elements in gap
+                    array[j] = array[j - gap]; // move elements in gap
                 }
-                array[j] = temp;
-                ArrayTools.arrayToMatrix(matrix, array);
+                ArrayTools.swap(array, j, i);
+                ArrayTools.arrayToMatrix(matrix, array); // update matrix
                 player.playFromArray(array[j], array.length);
                 Utils.sleep(25);
             }

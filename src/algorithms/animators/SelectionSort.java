@@ -14,14 +14,14 @@ public class SelectionSort {
         int[] array = ArrayTools.matrixToArray(matrix);
         SoundPlayer player = new SoundPlayer(playSound);
 
-        for (int i = 0; i < array.length; i++) {
+        for (int i = 0; i < array.length; i++) { // One by one move boundary of unsorted subarray
             int minIndex = i;
-            for (int j = i + 1; j < array.length; j++) {
-                if (array[j] < array[minIndex]) {
+            for (int j = i + 1; j < array.length; j++) { // Find the minimum element in unsorted array
+                if (array[j] < array[minIndex]) { // If the found minimum element is smaller than the first element
                     minIndex = j;
                 }
             }
-            ArrayTools.swap(array, i, minIndex);
+            ArrayTools.swap(array, i, minIndex); // Swap the found minimum element with the first element
             ArrayTools.arrayToMatrix(matrix, array);
             player.playFromArray(array[i], array.length);
             Utils.sleep(50);

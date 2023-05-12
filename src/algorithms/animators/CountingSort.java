@@ -13,18 +13,18 @@ public class CountingSort {
         int[] array = ArrayTools.matrixToArray(matrix);
         SoundPlayer player = new SoundPlayer(playSound);
 
-        int[] sorted = new int[array.length];
-        int[] count = new int[200 + 1];
-        for (int j : array) {
+        int[] sorted = new int[array.length]; // output array
+        int[] count = new int[matrix.getWidth() + 1]; // count array
+        for (int j : array) { // fill count array
             count[j]++;
         }
-        for (int i = 1; i < count.length; i++) {
+        for (int i = 1; i < count.length; i++) { // modify count array
             count[i] += count[i - 1];
         }
-        for (int i = array.length - 1; i >= 0; i--) {
-            sorted[count[array[i]] - 1] = array[i];
-            count[array[i]]--;
-            ArrayTools.arrayToMatrix(matrix, sorted);
+        for (int i = array.length - 1; i >= 0; i--) { // fill sorted array
+            sorted[count[array[i]] - 1] = array[i]; // -1 because of 0 indexing
+            count[array[i]]--;  // decrement count
+            ArrayTools.arrayToMatrix(matrix, sorted); // update matrix
             player.playFromArray(sorted[i], sorted.length);
             Utils.sleep(50);
         }
