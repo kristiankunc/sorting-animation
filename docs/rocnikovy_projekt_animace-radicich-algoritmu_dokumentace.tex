@@ -1,0 +1,264 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{lipsum}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{lmodern}
+\usepackage{minted}
+\usepackage{svg}
+\usepackage{amsmath}
+\usepackage[a4paper]{geometry}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=black,
+    urlcolor=black,
+    citecolor=black,
+}
+
+\renewcommand{\refname}{Reference}
+\bibliographystyle{plain}
+
+\renewcommand*\contentsname{Obsah}
+\newcommand{\source}[1]{\caption*{Zdroj: {#1}} }
+\renewcommand{\figurename}{Obr.}
+\newcommand{\redcite}[1]{{\hypersetup{citecolor=red}\cite{#1}}}
+
+\begin{document}
+
+
+\begin{titlepage}
+	\centering
+
+ 	{\scshape\large Gymnázium, Praha 6, Arabská 14\par}
+	{\scshape\normalsize předmět Programování, vyučující Daniel Kahoun\par}
+
+    \vspace{3cm}
+	\includegraphics[width=7cm]{img/gyarab_logo.png} \par\vspace{1cm}
+	\vspace{0.5cm}
+
+	{\Huge\bfseries Animace řadících algoritmů\par}
+    {\Large ročníkový projekt\par}
+
+	\vspace{4.25cm}
+    \textbf{\large Kristián Kunc, 1.E} \hfill \textbf{\large květen 2023}
+
+\end{titlepage}
+
+\vspace*{\fill}
+
+\thispagestyle{empty}
+\emph{Prohlašuji, že jsem jediným autorem tohoto projektu, všechny citace jsou
+řádně označené a všechna použitá literatura a další zdroje jsou v práci uvedené.
+Tímto dle zákona 121/2000 Sb. (tzv. Autorský zákon) ve znění pozdějších předpisů uděluji
+bezúplatně škole Gymnázium, Praha 6, Arabská 14 oprávnění k výkonu práva na rozmnožování díla
+(§ 13) a práva na sdělování díla veřejnosti (§ 18) na dobu časově neomezenou a bez omezení
+územního rozsahu}
+
+\vspace{1cm}
+\hfill{................................................................}
+\pagebreak
+
+\textbf{{\Large Anotace}} \linebreak
+Tento program umožní uživateli jednoduchou a intuitivní vizualizaci řadících algoritmů. Uživatel má na výběr z  10 známých algoritmů a před spuštěním může specifikovat velikost náhodného pole a má také možnost zapnout zvukové efekty. Každý algoritmus je implementován tak, že se po každé změně pole na chvíli zastaví, aby bylo možné změny pozorovat lidským okem. Krom animací je také k dispozici krátký popis a výkon každého algoritmu.
+
+\vspace{1cm}
+\textbf{{\Large Abstract}}\linebreak
+This program allows the user to have a simple and intuitive visualization of sorting algorithms. The user can choose from 10 well-known algorithms and before running them, they can specify the size of the random list and also have the option to turn on sound effects. Each algorithm is implemented in such a way that it stops for a moment after each change in the array so that the changes can be observed by the human eye. In addition to animations, a brief description and performance of each algorithm are also available.
+
+\vspace{1cm}
+\textbf{{\Large Összefoglalás}}\linebreak
+Ennek a programnak a használatával a felhasználó egy szimpla és intuitív vizuális megjelenés kap a szortírozó algoritmusukról. A felhasználó választhat 10 ismert algoritmus közül, és lefuttatásuk előtt megadhatják a méretét a random listának illetve ki/bekapcsolhatják a hangeffektusokat. Mindegyik algoritmus úgy van implementálva, hogy megálljon egy pillanatra minden listaváltozató művelet után, hogy megtekinthető legyen az emberi szem által is. Animációkon kívül egy rövid leírás, illetve egy hatékonysági mértéket is kap a felhasználó
+
+\vspace{1cm}
+\textbf{{\Large Özet}}\linebreak
+Bu program kullanıcıya sıralama algoritmalarının basit ve sezgisel görselleştirme-lerini sunar. Kullanıcı, 10 tanınmış algoritma arasından seçim yapabilir, çalıştır-ma öncesi rastgele dizinin büyüklüğünü belirleyebilir ve ses efektlerini etkinleştir-me seçeneğine sahip olabilir. Her algoritma, değişimler insan gözü tarafından gözlemlenebilsin diye her değişim sonrası bir an bekleyecek şekilde yazılmıştır. Animasyonlara ek olarak, her algoritmanın kısa açıklaması ve performansı da mevcuttur.
+
+\pagebreak
+
+\tableofcontents
+\pagebreak
+
+\section{Zadání}
+Naprogramujte aplikaci, která bude vizualizovat různé řadicí algoritmy pro seřazení pole čísel. Aplikace by měla umožňovat uživateli vybrat z několika různých řadicích algoritmů, které se budou vizualizovat. Pro vizualizaci algoritmů použijte sloupce, jejichž výška reprezentuje hodnotu daného čísla. Aplikace by měla také umožňovat uživateli změnit velikost pole a zapnout zvukové efekty, které doprovází algoritmus a hrají frekvenci podle hodnoty změněného prvku. Pro měření výkonu algoritmu použijte asymptotickou složitost.
+
+\section{Úvod}
+\subsection{Co je to řadící algoritmus}
+Řaďící algoritmus je algoritmus který dokáže seřadit pole prvků do požadovaného pořadí podle specifikovaného kritéria. Jeden z častých příkladů využití řadícího algoritmu řazení množiny reálných čísel vzestupně, od nejnižšího po nejvyšší, kdy vstupní množina je zcela náhodně zamíchaná. Když je pole seřazené, je možné použít algoritmy jako například binární vyhledávání, které jsou mnohem rychlejší než klasické lineární vyhledávání.
+
+\subsection{Měření výkonu algoritmu}
+Pro měření výkonu algoritmu se běžné používá asymptotická složitost (v angličtině \textit{big O notation}), která klasifikuje algoritmy podle růstu jejich doby běhu nebo využití paměti s rostoucí velikostí vstupu. V zápisu se často uživá proměnná \(n\), která reprezentuje velikost vstupních dat. Například algoritmus s \(O(n)\) bude rychlejší než algoritmus s \(O(n^2)\). Na grafu můžeme sledovat jak rostou různé složitosti, kdy na osa \(x\) reprezentuje velikost vstupních dat a osa \(y\) čas.
+
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=9cm]{img/big_o_graph.png}
+        \caption{Grafické porovnání různých tříd složitosti s ohledem na změnu velikosti vstupních dat. \cite{wiki:bigo}}
+        \label{imageLabel}
+    \end{center}
+\end{figure}
+
+\subsection{Stabilita algoritmu}
+U algoritmu se také uvadí jestli je stabilní či ne což indikuje jestli algoritmus ponechá identické vstupní prvky ve stejném relativním pořadí, jako ve vstupních datech. Na příkladu je vidět algoritmus, který řadí karty podle číselné hodnoty vzestupně, ve vstupních datech jsou ale 2 karty se stejnou hodnotou a srdcová karta 5 stojí před pikovou katrou 5. V příkladu stabilního (\textit{Stable}) algoritmu je toto relativní pořadí ponecháno a ve výstupu dodrženo. To neplatí pro nestabilní algoritmus (\textit{Not stable}), který relativní pořadí těchto karet změní.
+
+\begin{figure}[H]
+    \begin{center}
+        \includesvg[inkscapelatex=false,width=8cm]{img/sorting_stability.svg}
+        \caption{Stabilita řadícího algoritmu na příkladu hracích karet.
+        \cite{wiki:cards}}
+        \label{imageLabel}
+    \end{center}
+\end{figure}
+
+\subsection{Jak algoritmus animovat?}
+Inspirace a způsob pro animaci a vizualizaci algoritmů vznikla převážně z GitHub repozitáře \href{https://github.com/bingmann/sound-of-sorting}{github.com/bingmann/sound-of-sorting}, zveřejněný s licencí GPL v3.0. V tomto projektu jsou pro vizualizaci využité sloupce, jejichž výška reprezentuje hodnotu daného čísla. Tento nápad jsem převzal a implementoval pomocí třídy \verb|Matrix| (\textit{dále jen matice}) z knihovny \verb|ArabTools|, která slouží pro vytvoření pole světel, která jsem následně použil pro vizualizaci. Z tohoto projektu jsem si také vzal inspiraci pro zvukové efekty, které si uživatel může zapnout a ty doprovází algoritmus a podle hodnoty změněného prvku zahrají danou frekvenci.
+
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=9cm]{img/matrix_vis.png}
+        \caption{Vizualizace náhodně zamíchaného pole čísel v matici}
+        \label{imageLabel}
+    \end{center}
+\end{figure}
+
+\section{Využité nástroje}
+Jako vývojové prostředí jsem použil IntelliJ IDEA Ultimate od společnosti JetBrains, které je specializované na vývoj programů v Javě a nabízí mnoho funkcí pro zefektivnění vývoje jako například automatizované testování, profilování výkonu a podporu pro různé verzovací systémy.
+Další nástroj, který jsem využil při práci na mém projektu, je knihovna ArabTools. Tato knihovna nabízí různé funkce například pro pozastavení programu nebo samotnou matici.
+
+\section{Důležité části implementace}
+\subsection{Konverze pole na matici}
+Pro konverzi pole čísel do výšky sloupců v matici je využit následující kód.
+V této implementaci se předpokládá že:
+\begin{enumerate}
+    \item pole je stejně velké jako je matice široká
+    \item maximální hodnota prvků v poli nepřevyšuje výšku matice
+\end{enumerate}
+
+Uplně na záčátku se vstupní pole zkopíruje do posledního aplikované pole případě, že je prázdne/neexistuje (funkci spouštíme poprvé).
+Poté se projde každý sloupec matice a nastaví se barva světla na modrou popřípadně červenou, pokud se změnila hodnota v poli na této pozici od posledního aplikování.
+Na konci se vstupní pole zkopíruje do posledního aplikovaného pole.
+\begin{minted}[breaklines,frame=single]{java}
+public static void arrayToMatrix(Matrix matrix, int[] array) {
+    if (lastAppliedArray == null) { // if this is the first time the array is being applied, set lastAppliedArray to the array
+        lastAppliedArray = array.clone();
+    }
+
+    for (int i = 0; i < matrix.getWidth(); i++) { // apply the array to the matrix
+        LightColor color = LightColor.BLUE;
+
+        if (array[i] != lastAppliedArray[i]) {
+            color = LightColor.RED;
+        }
+        for (int j = 0; j < matrix.getHeight(); j++) {
+            if (j < array[i]) { // if the height is less than the value of the array at the index, turn on the light
+                matrix.setColor(i, j, color); // set the color of the light
+            } else {
+                matrix.setOff(i, j);
+            }
+        }
+    }
+    lastAppliedArray = array.clone(); // set lastAppliedArray to the array
+}
+\end{minted}
+
+\subsection{Zvukové efekty}
+Funkce na spouštení zvukových efektů má 2 parametry: value a max. Value je hodnota, která se má převést na frekvenci a max je maximální hodnota, která se může vyskytnout. Frekvence se vypočítá pomoci vzorce: 120 + (value / max) * (1212 - 120), která převede hodnotu na rozsah 120Hz-1212Hz za pomocí specifikované maximální hodnoty. Pak se vytvoří pole bajtů s délkou 1, který se použije pro zápis do sdl (\verb|SourceDataLine| z knihovny \verb|javax.sound.sampled|). Sdl se následné otevře a spustí. V cyklu se vypočítá úhel, který se použije pro výpočet sinu abychom dostali sinusovou křivku. Poté se vypočítá sinus úhlu a vynásobí se 100, aby byl hlasitější. Nakonec se zapišou data do sdl. Tato implememntace lehce zpomaluje animace vzhledem k tomu, že běží na stejném vláknu a vyústí ve zvukové artefakty, které mohou být nepříjemné, proto je zvuk v základním nastavení vypnutý.
+\begin{minted}[breaklines,frame=single]{java}
+    if (isMuted) return; // if the sound player is muted, return
+
+    // https://stackoverflow.com/a/929107/14762088
+    double freq = 120 + (value / (double) max) * (1212 - 120); // converts to range 120hz-1212hz
+
+    byte[] buf = new byte[1];
+    try {
+        sdl.open(af); // try to open the audio line
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+    sdl.start();
+    for (int i = 0; i < 1000; i++) {
+        double angle = i / (44100.0 / freq) * 2.0 * Math.PI; // 44100 is the sample rate, 2.0 is to make it louder, Math.PI is to make it a sine wave
+        buf[0] = (byte)(Math.sin(angle) * 100); // Get the sine of the angle, multiply by 100 to make it louder
+        sdl.write(buf, 0, 1); // write to audio line
+    }
+}
+\end{minted}
+
+\subsection{Seznam algoritmů}
+Všechny algoritmy jsou uložené ve speciální třídě typu \verb|Enum|, která obsahuje mnoho užitečných metod pro získaní specifického algoritmu jak už podle jeho \verb|ID, jména| nebo rovnou získat všechny v jednom poli. Každý algoritmus má mnoho atributů jako například \verb|prettyName| pro pěkné jméno užité v textech, \verb|description| pro stručný popis, nebo \verb|isStable| proměná datového typu \verb|boolean| reprezentující fakt, zda je algoritmus stabilní či nikoliv.
+\begin{minted}[breaklines,frame=single]{java}
+public enum Algorithm {
+    ...
+    public static String[] getNames() { // get all the algorithm names
+        String[] names = new String[Algorithm.values().length];
+        for (int i = 0; i < Algorithm.values().length; i++) {
+            names[i] = Algorithm.values()[i].prettyName;
+        }
+        return names;
+    }
+
+    public static Algorithm[] getAlgorithms() { // get all the algorithms
+        return Algorithm.values();
+    }
+
+    public static Algorithm getById(int id) { // get an algorithm by id
+        if (id < 0 || id >= Algorithm.values().length) {
+            return null;
+        }
+
+        return Algorithm.values()[id];
+    }
+
+    public static Algorithm getByName(String name) { // get an algorithm by name, case insensitive, spaces are ignored
+        for (Algorithm algorithm : Algorithm.values()) {
+            if (algorithm.prettyName.replace(" ", "").equalsIgnoreCase(name.replaceAll(" ", ""))) {
+                return algorithm;
+            }
+        }
+        return null;
+    }
+}
+\end{minted}
+\section{Spuštění a ovládání}
+\subsection{Systémové požadavky}
+Pro spuštění je potřeba mít nainstalovaný Java Runtime Environment (JRE) \(<=\) 17. Pro ověření přítomnosti požadopvané verze na Vašem počítači můžete použít \verb|--version| parametr.
+\begin{minted}{text}
+    $ java --version
+\end{minted}
+Pokud ve výstupu příkazu vidíme nižší verzi nebo příkaz nebyl nalezen, stáhneme nejnovější verzi pomocí instrukcí na \href{https://www.java.com/en/download/}{java.com/en/download}.
+Je nutné mít na paměti, že animace běží na jednom vlákně procesoru takže komplexnější animace mohou být na pomalejších procesorech nestabilní. Velikost matice \(>= 50^2\) by měla bez větších potíží běžet plynule na běžném procesoru, je ale možné spustit i animaci na matici o rozměrech \(300^2\) na výkonějších procesorech.
+
+\subsection{Spuštění jar souboru}
+Jakmile jsme ujištěni, že máme požadovanou verzi, otevřeme si příkazový řádek v adresáří kde se nechází výše zmíněný \verb|main.jar| a spustíme ho pomocí -jar parametru.
+\begin{minted}{text}
+    $ java -jar main.jar
+\end{minted}
+Tento příkaz spustí intuitivní uživatelské rozhraní a všechny potřebné instrukce jsou vytištěné v příkazovém řádku. Postupně odpovídáme na dotazy programu (výběr algoritmu, velikost matice, ...) zadáváním čísel či jiných hodnot.
+Pokud chceme spouštět animace rychle nebo hromadně můžeme je specifikovat v parametrech programu samotného. Pro zobrazení návodů k příkazům použijeme parametr help.
+\begin{minted}{text}
+    $ java -jar main.jar help
+\end{minted}
+
+\section{Závěr}
+Celkově jsem velmi spokojen s výsledkem své práce, ale na druhou stranu bych určitěl poukázal na mnohé nedostatky, jako například špatný výkon při vykreslování větší matice na méně výkoných procesorech a nepříjemné zvukové artefakty. Práce ovšem splnila, ne-li překonala, má očekávání a rozhodně splnila účel - vizualizovat řadící algoritmy. Věřím, že může pomoci odtajnit uživatelům mnohdy neznámé či nepředstavitelné algoritmy schované za funkcemi \verb|.sort()|. Určitě je možné práci dál posouvat například přidáním dalších algoritmů nebo více uživatelských vstupů a možností personalizace rozhraní.
+
+\section{Zdroje}
+\begin{enumerate}
+  \item Java dokumentace - \par \url{https://docs.oracle.com/en/java/}
+  \item ArabTools dokumentace - \par \url{https://vyuka.gyarab.cz/kahoun/download/ArabTools/javadoc/}
+  \item Řadící algoritmy, Wikipedia - \par \url{https://en.wikipedia.org/wiki/Sorting_algorithm}
+  \item Řadící algoritmy, GeeksForGeeks \par \url{https://www.geeksforgeeks.org/sorting-algorithms/}
+  \item Asymptotická složitost, Wikipedia \par \url{https://en.wikipedia.org/wiki/Big_O_notation}
+  \item The sound of sorting, GitHub \par \url{https://github.com/bingmann/sound-of-sorting}
+  \item Převod číslá na jiný rozsah,  StackOverflow \par \url{https://stackoverflow.com/a/929107/14762088}
+  \item Vymazat příkazový řádek, StackOverflow \par \url{https://stackoverflow.com/a/32295974/14762088}
+  \item Maďarská anotace, Gábe \par \url{https://github.com/gabe56f}
+  \item Turecká anotace, geniusjam \par \url{https://github.com/geniusjam}
+  \item Vytvoření sinusoidy v Javě, GT's Blog \par \url{http://blog.gtiwari333.com/2011/12/java-sound-generate-play-sine-wave.html}
+\end{enumerate}
+
+\bibliography{refs}
+
+\end{document}
