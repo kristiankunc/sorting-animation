@@ -12,14 +12,16 @@ public class ShellSort {
         int[] array = ArrayTools.matrixToArray(matrix);
         SoundPlayer player = new SoundPlayer(playSound);
 
-        for (int gap = array.length / 2; gap > 0; gap /= 2) { // loop over gaps, gap means how many elements are between two compared elements
-            for (int i = gap; i < array.length; i += 1) { // loop over elements
-                int j;
-                for (j = i; j >= gap && array[j - gap] >= array[i]; j -= gap) { // loop over elements in gap
-                    array[j] = array[j - gap]; // move elements in gap
+        for (int gap = array.length / 2; gap > 0; gap /= 2) { // Start with a big gap, then reduce the gap
+            for (int i = gap; i < array.length; i += 1) { // Do a gapped insertion sort for this gap size.
+                int temp = array[i]; // Save array[i] in temp and make a hole at position i
+                int j; // Shift earlier gap-sorted elements up until the correct location for array[i] is found
+                for (j = i; j >= gap && array[j - gap] >= temp; j -= gap) { // j -= gap is the same as j = j - gap
+                    array[j] = array[j - gap]; // Put temp (the original array[i]) into its correct location
                 }
-                ArrayTools.swap(array, j, i);
-                ArrayTools.arrayToMatrix(matrix, array); // update matrix
+                array[j] = temp; // Put temp (the original array[i]) into its correct location
+
+                ArrayTools.arrayToMatrix(matrix, array); // Render the array
                 player.playFromArray(array[j], array.length);
                 Utils.sleep(25);
             }
